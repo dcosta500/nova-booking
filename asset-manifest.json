@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/nova-booking/static/css/main.073c9b0a.css",
+    "main.js": "/nova-booking/static/js/main.84719853.js",
+    "static/js/787.13acab92.chunk.js": "/nova-booking/static/js/787.13acab92.chunk.js",
+    "static/media/logo.svg": "/nova-booking/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/nova-booking/index.html",
+    "main.073c9b0a.css.map": "/nova-booking/static/css/main.073c9b0a.css.map",
+    "main.84719853.js.map": "/nova-booking/static/js/main.84719853.js.map",
+    "787.13acab92.chunk.js.map": "/nova-booking/static/js/787.13acab92.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.84719853.js"
+  ]
+}
