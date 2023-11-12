@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { useNavigate } from "react-router-dom";
 
 const redirectTo = (path) => {
-  window.location.href = path;
+  alert("Deprecated! change redirect function.");
 };
 
 export const functionsSlice = createSlice({

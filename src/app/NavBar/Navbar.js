@@ -4,13 +4,11 @@ import Typography from "@mui/material/Typography";
 
 // css
 import "./Navbar.css";
-import { useSelector } from "react-redux";
-
-const pages = ["Products", "Pricing", "Blog"];
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   // Fetch object from store
-  const functions = useSelector((state) => state.functions);
+  const navigate = useNavigate();
 
   const images = {
     logo: require("src/images/typo_logo.png"),
@@ -35,7 +33,7 @@ const Navbar = () => {
         </Box>
         <Box className="buttons-container">
           <Typography
-            onClick={() => functions.redirectTo("/nova-booking")}
+            onClick={() => navigate("/nova-booking")}
             sx={{ ...buttonTextStyle, color: "white" }}
           >
             Home
@@ -55,7 +53,7 @@ const Navbar = () => {
         </Box>
         <Box className="avatar-container">
           <img
-            onClick={() => functions.redirectTo("/nova-booking/profile")}
+            onClick={() => navigate("/nova-booking/profile")}
             className="avatar"
             src={images.avatar}
             alt="Avatar"
