@@ -16,7 +16,7 @@
 }
 
 .map-image {
-  height: 80vh; /*80% of visual port vertical height*/
+  height: 75vh; /*80% of visual port vertical height*/
 
   border-radius: 1.25rem;
   border: 0.5rem solid #5c5c5c;
