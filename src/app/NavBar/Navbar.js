@@ -32,7 +32,10 @@ const Navbar = () => {
   return (
     <Box className="navbar-section">
       <Box className="navbar-container">
-        <Box className="logo-container">
+        <Box
+          onClick={() => navigate(paths.homePage)}
+          className="logo-container"
+        >
           <img className="logo" src={images.logo} />
         </Box>
         <Box className="buttons-container">

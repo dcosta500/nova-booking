@@ -43,6 +43,10 @@
   font-size: 1.25rem;
 }
 
+.logo-container:hover {
+  cursor: pointer;
+}
+
 .logo {
   height: 3rem;
 }
