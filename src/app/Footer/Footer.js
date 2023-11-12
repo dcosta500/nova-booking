@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <Box className="footer">
       <Typography>
-        Project made by Diogo Costa, Diogo Lemos, José Trigueiro & Tomás Gabriel
+        Group 10 - Diogo Costa / Diogo Lemos / José Trigueiro / Tomás Gabriel
       </Typography>
     </Box>
   );
