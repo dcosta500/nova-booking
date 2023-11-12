@@ -1,16 +1,20 @@
 {
   "files": {
-    "main.css": "/nova-booking/static/css/main.073c9b0a.css",
-    "main.js": "/nova-booking/static/js/main.84719853.js",
+    "main.css": "/nova-booking/static/css/main.22a23596.css",
+    "main.js": "/nova-booking/static/js/main.331f8ecb.js",
     "static/js/787.13acab92.chunk.js": "/nova-booking/static/js/787.13acab92.chunk.js",
-    "static/media/logo.svg": "/nova-booking/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/ipm-map-ed2.png": "/nova-booking/static/media/ipm-map-ed2.7ef29d7195d237a89a0f.png",
+    "static/media/ipm-map-library.png": "/nova-booking/static/media/ipm-map-library.2fb63ee9c5314c7b2866.png",
+    "static/media/ipm-map.png": "/nova-booking/static/media/ipm-map.62400016bbaee8239f58.png",
+    "static/media/typo_logo.png": "/nova-booking/static/media/typo_logo.6a0a7380e88e9bcafa1b.png",
+    "static/media/profile_pic.jpg": "/nova-booking/static/media/profile_pic.e97a7569e77787b64f4b.jpg",
     "index.html": "/nova-booking/index.html",
-    "main.073c9b0a.css.map": "/nova-booking/static/css/main.073c9b0a.css.map",
-    "main.84719853.js.map": "/nova-booking/static/js/main.84719853.js.map",
+    "main.22a23596.css.map": "/nova-booking/static/css/main.22a23596.css.map",
+    "main.331f8ecb.js.map": "/nova-booking/static/js/main.331f8ecb.js.map",
     "787.13acab92.chunk.js.map": "/nova-booking/static/js/787.13acab92.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.84719853.js"
+    "static/css/main.22a23596.css",
+    "static/js/main.331f8ecb.js"
   ]
 }
