@@ -1,11 +1,15 @@
 import { Box } from "@mui/material";
 import Navbar from "./NavBar/Navbar";
+import HomePage from "./Pages/HomePage/HomePage";
+
+// css
+import "src/styles/NovaBooking.css";
 
 const NovaBooking = () => {
   return (
-    <Box sx={{ backgroundColor: "#2f3332" }}>
+    <Box className="novabooking">
       <Navbar />
-      <div style={{ height: "1000px" }}></div>
+      <HomePage />
     </Box>
   );
 };

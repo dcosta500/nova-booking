@@ -1,0 +1,57 @@
+.navbar-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #2b2b2b;
+  height: 6.16rem;
+}
+
+.navbar-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 4.41rem;
+  width: 82.38rem;
+
+  padding-top: 1.28rem;
+  padding-bottom: 0.46rem;
+
+  padding-left: 4.75rem;
+  padding-right: 4.75rem;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  justify-content: space-between;
+
+  width: 27.31rem;
+  height: 3.5rem;
+
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+
+  border-bottom: 1px solid white;
+}
+
+.button-text {
+  font-size: 1.25rem;
+}
+
+.logo {
+  height: 3rem;
+}
+
+.avatar-container {
+}
+
+.avatar {
+  height: 4.41rem;
+  width: 4.41rem;
+  border-radius: 4.41rem;
+}

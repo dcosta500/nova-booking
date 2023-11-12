@@ -1,95 +1,47 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import { orange } from "@mui/material/colors";
+
+// css
+import "src/styles/NavBar/Navbar.css";
 
 const pages = ["Products", "Pricing", "Blog"];
 
-function Navbar() {
-  let logo = require("src/images/logo_temp.png");
-
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
+const Navbar = () => {
+  const images = {
+    logo: require("src/images/typo_logo.png"),
+    avatar: require("src/images/profile_freddy.png"),
   };
 
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
-  };
+  const teal = "#456268";
 
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
+  const buttonTextStyle = {
+    fontSize: "1.25rem",
+    fontWeight: "500",
   };
 
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Avatar
-            sx={{ bgcolor: orange, height: 80, width: 80 }}
-            variant="square"
-            src={logo}
-            alt="Logo"
-          ></Avatar>
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            ></IconButton>
-          </Box>
-          <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
+    <Box /* sx={{ border: "1px solid #000" }} */ className="navbar-section">
+      <Box className="navbar-container">
+        <Box className="logo-container">
+          <img className="logo" src={images.logo} />
+        </Box>
+        <Box className="buttons-container">
+          <Typography sx={{ ...buttonTextStyle, color: "white" }}>
+            Home
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-          </Box>
-        </Toolbar>
-      </Container>
-    </AppBar>
+          <Typography sx={{ ...buttonTextStyle, color: teal }}>
+            Reservations
+          </Typography>
+          <Typography sx={{ ...buttonTextStyle, color: teal }}>
+            About
+          </Typography>
+        </Box>
+        <Box className="avatar-container">
+          <img className="avatar" src={images.avatar} alt="Avatar" />
+        </Box>
+      </Box>
+    </Box>
   );
-}
+};
 export default Navbar;

@@ -1,0 +1,37 @@
+.home-page-section {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  justify-content: space-between;
+
+  padding-top: 2.5vh;
+
+  padding-left: 11.03rem;
+  padding-right: 11.03rem;
+}
+
+.upcoming-reservations-container {
+  height: 80vh;
+  width: 14.81rem;
+
+  background-color: #3c3c3c;
+}
+
+/* Map Section */
+.map-container {
+}
+
+.map-image {
+  height: 80vh; /*80% of visual port vertical height*/
+
+  border-radius: 1.25rem;
+  border: 0.5rem solid #5c5c5c;
+}
+
+.select-building-container {
+  height: 80vh;
+  width: 14.81rem;
+
+  background-color: #3c3c3c;
+}
