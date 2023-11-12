@@ -1,0 +1,41 @@
+.column-title {
+  height: 5.03rem;
+  width: 70%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+
+  border-bottom: 1px solid white;
+
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.column {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  height: 80vh;
+  width: 14.81rem;
+
+  border-radius: 1.25rem;
+
+  background-color: #3c3c3c;
+}
+
+.none-container {
+  height: 100%;
+
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  justify-content: center;
+}
