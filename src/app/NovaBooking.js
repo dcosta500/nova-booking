@@ -7,14 +7,11 @@ import { Route, Routes } from "react-router-dom";
 import "./NovaBooking.css";
 import ProfilePage from "./Pages/Profile/ProfilePage";
 import Footer from "./Footer/Footer";
+import AboutPage from "./Pages/About/AboutPage";
+import { useSelector } from "react-redux";
 
 const NovaBooking = () => {
-  const prefix = "/nova-booking";
-
-  const paths = {
-    homePage: prefix.concat(""),
-    profilePage: prefix.concat("/profile"),
-  };
+  const paths = useSelector((store) => store.paths);
 
   return (
     <Box className="novabooking">
@@ -23,6 +20,7 @@ const NovaBooking = () => {
         <Routes>
           <Route path={paths.homePage} element={<HomePage />} />
           <Route path={paths.profilePage} element={<ProfilePage />} />
+          <Route path={paths.aboutPage} element={<AboutPage />} />
         </Routes>
       </div>
       <Footer />

@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 
 const Navbar = () => {
   // Fetch object from store
+  const paths = useSelector((store) => store.paths);
   const user = useSelector((store) => store.user);
   const navigate = useNavigate();
 
@@ -36,19 +37,23 @@ const Navbar = () => {
         </Box>
         <Box className="buttons-container">
           <Typography
-            onClick={() => navigate("/nova-booking")}
+            onClick={() => navigate(paths.homePage)}
             sx={{ ...buttonTextStyle, color: "white" }}
           >
             Home
           </Typography>
           <Typography
-            onClick={() => alert("Not implemented")}
+            onClick={() =>
+              user.name == undefined
+                ? navigate(paths.profilePage)
+                : navigate(paths.homePage)
+            }
             sx={{ ...buttonTextStyle, color: teal }}
           >
             Reservations
           </Typography>
           <Typography
-            onClick={() => alert("Not implemented")}
+            onClick={() => navigate(paths.aboutPage)}
             sx={{ ...buttonTextStyle, color: teal }}
           >
             About
@@ -56,7 +61,7 @@ const Navbar = () => {
         </Box>
         <Box className="avatar-container">
           <img
-            onClick={() => navigate("/nova-booking/profile")}
+            onClick={() => navigate(paths.profilePage)}
             className="avatar"
             src={user.name == undefined ? images.defaultAvatar : images.avatar}
             alt="Avatar"
