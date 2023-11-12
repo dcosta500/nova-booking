@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 // css
 import "./NovaBooking.css";
 import ProfilePage from "./Pages/Profile/ProfilePage";
+import Footer from "./Footer/Footer";
 
 const NovaBooking = () => {
   const prefix = "/nova-booking";
@@ -24,6 +25,7 @@ const NovaBooking = () => {
           <Route path={paths.profilePage} element={<ProfilePage />} />
         </Routes>
       </div>
+      <Footer />
     </Box>
   );
 };
