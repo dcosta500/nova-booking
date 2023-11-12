@@ -1,0 +1,10 @@
+.page-container {
+  display: flex;
+
+  padding-top: 2.5vh;
+
+  flex-direction: row;
+  justify-content: center;
+
+  width: 100%;
+}

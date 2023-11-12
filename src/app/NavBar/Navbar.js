@@ -3,11 +3,15 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
 // css
-import "src/styles/NavBar/Navbar.css";
+import "./Navbar.css";
+import { useSelector } from "react-redux";
 
 const pages = ["Products", "Pricing", "Blog"];
 
 const Navbar = () => {
+  // Fetch object from store
+  const functions = useSelector((state) => state.functions);
+
   const images = {
     logo: require("src/images/typo_logo.png"),
     avatar: require("src/images/profile_pic.jpg"),
@@ -31,7 +35,7 @@ const Navbar = () => {
         </Box>
         <Box className="buttons-container">
           <Typography
-            onClick={() => alert("Not implemented")}
+            onClick={() => functions.redirectTo("/nova-booking")}
             sx={{ ...buttonTextStyle, color: "white" }}
           >
             Home
@@ -50,7 +54,12 @@ const Navbar = () => {
           </Typography>
         </Box>
         <Box className="avatar-container">
-          <img className="avatar" src={images.avatar} alt="Avatar" />
+          <img
+            onClick={() => functions.redirectTo("/nova-booking/profile")}
+            className="avatar"
+            src={images.avatar}
+            alt="Avatar"
+          />
         </Box>
       </Box>
     </Box>

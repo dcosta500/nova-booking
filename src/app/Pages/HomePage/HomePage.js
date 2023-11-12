@@ -3,7 +3,7 @@ import * as React from "react";
 import ContentColumn from "./ContentColumn";
 
 // css
-import "src/styles/Pages/HomePage/HomePage.css";
+import "./HomePage.css";
 
 const HomePage = () => {
   const [mapImage, setMapImage] = React.useState("main");

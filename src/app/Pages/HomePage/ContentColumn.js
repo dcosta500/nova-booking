@@ -2,7 +2,7 @@ import * as React from "react";
 import { Box, Typography } from "@mui/material";
 
 // css
-import "src/styles/Pages/HomePage/ContentColumn.css";
+import "./ContentColumn.css";
 
 /*
     props -> children, title
@@ -14,7 +14,7 @@ const ContentColumn = (props) => {
       fontWeight: "500",
       color: "white",
     },
-    upcomingReservationsNoneStyle: {
+    noneStyle: {
       fontSize: "1.5rem",
       fontWeight: "500",
       color: "#7c7c7c",
@@ -23,9 +23,7 @@ const ContentColumn = (props) => {
 
   const noneContent = (
     <Box className="none-container">
-      <Typography sx={{ ...styles.upcomingReservationsNoneStyle }}>
-        None
-      </Typography>
+      <Typography sx={{ ...styles.noneStyle }}>None</Typography>
     </Box>
   );
 

@@ -4,13 +4,15 @@ import HomePage from "./Pages/HomePage/HomePage";
 import { Route, Routes } from "react-router-dom";
 
 // css
-import "src/styles/NovaBooking.css";
+import "./NovaBooking.css";
+import ProfilePage from "./Pages/Profile/ProfilePage";
 
 const NovaBooking = () => {
   const prefix = "/nova-booking";
 
   const paths = {
     homePage: prefix.concat(""),
+    profilePage: prefix.concat("/profile"),
   };
 
   return (
@@ -19,6 +21,7 @@ const NovaBooking = () => {
       <div className="site-body">
         <Routes>
           <Route path={paths.homePage} element={<HomePage />} />
+          <Route path={paths.profilePage} element={<ProfilePage />} />
         </Routes>
       </div>
     </Box>
