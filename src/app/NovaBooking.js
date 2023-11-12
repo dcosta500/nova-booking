@@ -7,12 +7,18 @@ import { Route, Routes } from "react-router-dom";
 import "src/styles/NovaBooking.css";
 
 const NovaBooking = () => {
+  const prefix = "/nova-booking";
+
+  const paths = {
+    homePage: prefix.concat(""),
+  };
+
   return (
     <Box className="novabooking">
       <Navbar />
       <div className="site-body">
         <Routes>
-          <Route path="/nova-booking" element={<HomePage />} />
+          <Route path={paths.homePage} element={<HomePage />} />
         </Routes>
       </div>
     </Box>
