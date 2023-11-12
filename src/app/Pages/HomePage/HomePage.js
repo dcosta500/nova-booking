@@ -15,7 +15,7 @@ const HomePage = () => {
   };
 
   const buttonListStyle = {
-    overflow: "scroll",
+    overflowY: "scroll",
   };
 
   const buildings = [

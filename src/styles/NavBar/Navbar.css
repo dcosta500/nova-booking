@@ -56,3 +56,12 @@
   border-radius: 4.41rem;
   box-shadow: 2px 2px 2px black;
 }
+
+.avatar:hover {
+  cursor: pointer;
+}
+
+.avatar:active {
+  filter: brightness(50%);
+  box-shadow: 0 0 0 transparent;
+}
