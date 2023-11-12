@@ -29,13 +29,7 @@ const ContentColumn = (props) => {
     </Box>
   );
 
-  const listContent = (
-    <Box className="none-container">
-      <Typography sx={{ ...styles.upcomingReservationsNoneStyle }}>
-        {props.children}
-      </Typography>
-    </Box>
-  );
+  const listContent = <Box className="content">{props.children}</Box>;
 
   let content = props.children == undefined ? noneContent : listContent;
 

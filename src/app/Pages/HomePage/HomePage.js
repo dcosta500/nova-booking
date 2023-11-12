@@ -1,7 +1,6 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Button, List, ListItem, Typography } from "@mui/material";
 import * as React from "react";
 import ContentColumn from "./ContentColumn";
-
 // css
 import "src/styles/Pages/HomePage/HomePage.css";
 
@@ -14,18 +13,84 @@ const HomePage = () => {
     ed2: require("src/images/map/ipm-map-ed2.png"),
   };
 
-  const styles = {
-    columnTitleStyle: {
-      fontSize: "1.5rem",
-      fontWeight: "500",
-      color: "white",
-    },
-    upcomingReservationsNoneStyle: {
-      fontSize: "1.5rem",
-      fontWeight: "500",
-      color: "#7c7c7c",
-    },
+  const buttonListStyle = {
+    overflow: "scroll",
   };
+
+  const buildings = [
+    {
+      name: "Biblioteca",
+      mapName: "library",
+    },
+    {
+      name: "Edifício 2",
+      mapName: "ed2",
+    },
+    {
+      name: "Biblioteca",
+      mapName: "library",
+    },
+    {
+      name: "Edifício 2",
+      mapName: "ed2",
+    },
+    {
+      name: "Biblioteca",
+      mapName: "library",
+    },
+    {
+      name: "Edifício 2",
+      mapName: "ed2",
+    },
+    {
+      name: "Biblioteca",
+      mapName: "library",
+    },
+    {
+      name: "Edifício 2",
+      mapName: "ed2",
+    },
+    {
+      name: "Biblioteca",
+      mapName: "library",
+    },
+    {
+      name: "Edifício 2",
+      mapName: "ed2",
+    },
+    {
+      name: "Biblioteca",
+      mapName: "library",
+    },
+    {
+      name: "Edifício 2",
+      mapName: "ed2",
+    },
+    {
+      name: "Biblioteca",
+      mapName: "library",
+    },
+    {
+      name: "Edifício 2",
+      mapName: "ed2",
+    },
+    {
+      name: "Biblioteca",
+      mapName: "library",
+    },
+    {
+      name: "Edifício 2",
+      mapName: "ed2",
+    },
+    {
+      name: "Biblioteca",
+      mapName: "library",
+    },
+    {
+      name: "Edifício 2",
+      mapName: "ed2",
+    },
+  ];
 
   let upcomingReservationsColumn = {
     title: "Upcoming Reservations",
@@ -33,19 +98,35 @@ const HomePage = () => {
   };
 
   let selectBuildingColumn = {
-    title: "Select Building",
-    content: undefined,
+    title: "Select a Building",
+    content: (
+      <List sx={buttonListStyle}>
+        {buildings.map((building, key) => (
+          <ListItem key={key}>
+            <Box className="select-building-button-container">
+              <Button
+                onMouseEnter={() => setMapImage(building.mapName)}
+                className="select-building-button"
+                variant="contained"
+              >
+                {building.name}
+              </Button>
+            </Box>
+          </ListItem>
+        ))}
+      </List>
+    ),
   };
 
   return (
     <Box className="home-page-section">
-      <ContentColumn title="Upcoming Reservations">
+      <ContentColumn title={upcomingReservationsColumn.title}>
         {upcomingReservationsColumn.content}
       </ContentColumn>
       <Box className="map-container">
         <img className="map-image" src={maps[mapImage]} alt="Map" />
       </Box>
-      <ContentColumn title="Select Building">
+      <ContentColumn title={selectBuildingColumn.title}>
         {selectBuildingColumn.content}
       </ContentColumn>
     </Box>
