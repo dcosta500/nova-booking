@@ -1,6 +1,7 @@
-import { Box, Button, List, ListItem, Typography } from "@mui/material";
+import { Box, Button, List, ListItem } from "@mui/material";
 import * as React from "react";
 import ContentColumn from "./ContentColumn";
+
 // css
 import "src/styles/Pages/HomePage/HomePage.css";
 

@@ -10,7 +10,7 @@ const pages = ["Products", "Pricing", "Blog"];
 const Navbar = () => {
   const images = {
     logo: require("src/images/typo_logo.png"),
-    avatar: require("src/images/profile_freddy.png"),
+    avatar: require("src/images/profile_pic.jpg"),
   };
 
   const teal = "#456268";
@@ -18,22 +18,34 @@ const Navbar = () => {
   const buttonTextStyle = {
     fontSize: "1.25rem",
     fontWeight: "500",
+    "&:hover": {
+      cursor: "pointer",
+    },
   };
 
   return (
-    <Box /* sx={{ border: "1px solid #000" }} */ className="navbar-section">
+    <Box className="navbar-section">
       <Box className="navbar-container">
         <Box className="logo-container">
           <img className="logo" src={images.logo} />
         </Box>
         <Box className="buttons-container">
-          <Typography sx={{ ...buttonTextStyle, color: "white" }}>
+          <Typography
+            onClick={() => alert("Not implemented")}
+            sx={{ ...buttonTextStyle, color: "white" }}
+          >
             Home
           </Typography>
-          <Typography sx={{ ...buttonTextStyle, color: teal }}>
+          <Typography
+            onClick={() => alert("Not implemented")}
+            sx={{ ...buttonTextStyle, color: teal }}
+          >
             Reservations
           </Typography>
-          <Typography sx={{ ...buttonTextStyle, color: teal }}>
+          <Typography
+            onClick={() => alert("Not implemented")}
+            sx={{ ...buttonTextStyle, color: teal }}
+          >
             About
           </Typography>
         </Box>
