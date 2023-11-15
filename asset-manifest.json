@@ -1,21 +1,26 @@
 {
   "files": {
-    "main.css": "/nova-booking/static/css/main.4720c1d2.css",
-    "main.js": "/nova-booking/static/js/main.edb47e7d.js",
+    "main.css": "/nova-booking/static/css/main.a25618a6.css",
+    "main.js": "/nova-booking/static/js/main.a08ce52b.js",
     "static/js/787.13acab92.chunk.js": "/nova-booking/static/js/787.13acab92.chunk.js",
+    "static/media/joseProfile.jpg": "/nova-booking/static/media/joseProfile.1595d526121495be27e4.jpg",
     "static/media/ipm-map-ed2.png": "/nova-booking/static/media/ipm-map-ed2.7ef29d7195d237a89a0f.png",
     "static/media/ipm-map-library.png": "/nova-booking/static/media/ipm-map-library.2fb63ee9c5314c7b2866.png",
     "static/media/ipm-map.png": "/nova-booking/static/media/ipm-map.62400016bbaee8239f58.png",
+    "static/media/logo_icon.png": "/nova-booking/static/media/logo_icon.23261a5f89c91a4b8151.png",
     "static/media/typo_logo.png": "/nova-booking/static/media/typo_logo.6a0a7380e88e9bcafa1b.png",
+    "static/media/lemosProfile.jpg": "/nova-booking/static/media/lemosProfile.e97a7569e77787b64f4b.jpg",
     "static/media/profile_pic.jpg": "/nova-booking/static/media/profile_pic.e97a7569e77787b64f4b.jpg",
+    "static/media/pinaProfile.jpeg": "/nova-booking/static/media/pinaProfile.40d2e000e885e7fa1a40.jpeg",
+    "static/media/costaProfile.jpeg": "/nova-booking/static/media/costaProfile.a625d98b3c5bfda64d68.jpeg",
     "static/media/profile-default.jpg": "/nova-booking/static/media/profile-default.0bfb883dddf5359d22bd.jpg",
     "index.html": "/nova-booking/index.html",
-    "main.4720c1d2.css.map": "/nova-booking/static/css/main.4720c1d2.css.map",
-    "main.edb47e7d.js.map": "/nova-booking/static/js/main.edb47e7d.js.map",
+    "main.a25618a6.css.map": "/nova-booking/static/css/main.a25618a6.css.map",
+    "main.a08ce52b.js.map": "/nova-booking/static/js/main.a08ce52b.js.map",
     "787.13acab92.chunk.js.map": "/nova-booking/static/js/787.13acab92.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4720c1d2.css",
-    "static/js/main.edb47e7d.js"
+    "static/css/main.a25618a6.css",
+    "static/js/main.a08ce52b.js"
   ]
 }
