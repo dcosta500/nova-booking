@@ -26,6 +26,27 @@
   padding: 1rem;
 }
 
+.library-right-picker-content {
+  display: flex;
+
+  align-items: start;
+  justify-content: center;
+
+  width: 30rem;
+  height: 50vh;
+  padding: 1rem;
+}
+
+.library-right-picker {
+  display: flex;
+
+  align-items: start;
+  justify-content: center;
+
+  width: 10.81rem;
+  height: 50vh;
+}
+
 .library-info-content {
   display: flex;
   flex-direction: column;

@@ -21,16 +21,16 @@ const Library = (props) => {
 
   const pages = [
     {
-      id: "books",
-      title: "Books",
+      id: "rooms",
+      title: "Rooms",
     },
     {
       id: "materials",
       title: "Materials",
     },
     {
-      id: "rooms",
-      title: "Rooms",
+      id: "books",
+      title: "Books",
     },
   ];
 
@@ -95,7 +95,7 @@ const Library = (props) => {
     </Box>
   );
 
-  const paperContent = () => {
+  const centerDisplayContent = () => {
     switch (subPage) {
       case "books":
         return booksContent;
@@ -112,9 +112,11 @@ const Library = (props) => {
     <Box className="column-1">
       <Box className="library-button-section">{buttons}</Box>
       <Box className="library-info-section">
-        <Paper sx={paperStyle} className="library-info-card">
-          <Box className="library-info-content">info</Box>
-        </Paper>
+        {subPage === "rooms" && (
+          <Paper sx={paperStyle} className="library-info-card">
+            <Box className="library-info-content">Item Info</Box>
+          </Paper>
+        )}
       </Box>
     </Box>
   );
@@ -125,10 +127,16 @@ const Library = (props) => {
         {buttonAndInfoColumn}
         <Box className="column-2">
           <Paper sx={paperStyle} className="center-display">
-            {paperContent()}
+            {centerDisplayContent()}
           </Paper>
         </Box>
-        <Box className="column-3">b</Box>
+        <Box className="column-3">
+          <Paper sx={paperStyle} className="library-right-picker">
+            <Box className="library-right-picker-content">
+              <Typography>Picker Content</Typography>
+            </Box>
+          </Paper>
+        </Box>
       </Box>
     </Page>
   );
