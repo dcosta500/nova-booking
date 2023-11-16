@@ -4,8 +4,12 @@ import ContentColumn from "./ContentColumn";
 
 // css
 import "./HomePage.css";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
+  const paths = useSelector((store) => store.paths);
+  const navigate = useNavigate();
   const [mapImage, setMapImage] = React.useState("main");
 
   const maps = {
@@ -22,74 +26,12 @@ const HomePage = () => {
     {
       name: "Biblioteca",
       mapName: "library",
+      path: paths.libraryPage,
     },
     {
       name: "Edifício 2",
       mapName: "ed2",
-    },
-    {
-      name: "Biblioteca",
-      mapName: "library",
-    },
-    {
-      name: "Edifício 2",
-      mapName: "ed2",
-    },
-    {
-      name: "Biblioteca",
-      mapName: "library",
-    },
-    {
-      name: "Edifício 2",
-      mapName: "ed2",
-    },
-    {
-      name: "Biblioteca",
-      mapName: "library",
-    },
-    {
-      name: "Edifício 2",
-      mapName: "ed2",
-    },
-    {
-      name: "Biblioteca",
-      mapName: "library",
-    },
-    {
-      name: "Edifício 2",
-      mapName: "ed2",
-    },
-    {
-      name: "Biblioteca",
-      mapName: "library",
-    },
-    {
-      name: "Edifício 2",
-      mapName: "ed2",
-    },
-    {
-      name: "Biblioteca",
-      mapName: "library",
-    },
-    {
-      name: "Edifício 2",
-      mapName: "ed2",
-    },
-    {
-      name: "Biblioteca",
-      mapName: "library",
-    },
-    {
-      name: "Edifício 2",
-      mapName: "ed2",
-    },
-    {
-      name: "Biblioteca",
-      mapName: "library",
-    },
-    {
-      name: "Edifício 2",
-      mapName: "ed2",
+      path: paths.homePage,
     },
   ];
 
@@ -107,6 +49,7 @@ const HomePage = () => {
             <Box className="select-building-button-container">
               <Button
                 onMouseEnter={() => setMapImage(building.mapName)}
+                onClick={() => navigate(building.path)}
                 className="select-building-button"
                 variant="contained"
               >

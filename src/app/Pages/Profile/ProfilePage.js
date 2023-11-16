@@ -53,7 +53,7 @@ const ProfilePage = () => {
 
   const onClickLogin = () => {
     dispatch(updateName("Diogo Lemos"));
-    navigate("/nova-booking/profile");
+    navigate("/nova-booking");
   };
 
   const onClickLogout = () => {
@@ -113,7 +113,7 @@ const ProfilePage = () => {
 
   let content = user.name == undefined ? login : profile;
 
-  return <Box class="box-page">{content}</Box>;
+  return <Box className="box-page">{content}</Box>;
 };
 
 export default ProfilePage;

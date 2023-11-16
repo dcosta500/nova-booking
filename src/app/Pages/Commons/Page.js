@@ -7,7 +7,9 @@ import "./Page.css";
 const Page = (props) => {
   return (
     <Box className="page-container">
-      <Plate title={props.title}>{props.children}</Plate>
+      <Plate height={props.height} title={props.title}>
+        {props.children}
+      </Plate>
     </Box>
   );
 };

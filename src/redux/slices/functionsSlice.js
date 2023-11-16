@@ -1,9 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { useNavigate } from "react-router-dom";
 
-const redirectTo = (path) => {
-  alert("Deprecated! change redirect function.");
-};
+const redirectTo = (path) => alert("Deprecated! change redirect function.");
 
 export const functionsSlice = createSlice({
   name: "functions",

@@ -7,7 +7,7 @@ import "./AboutPage.css";
 
 const AboutPage = () => {
   return (
-    <Page title="About">
+    <Page height="720px" title="About">
       <Box className="about-description-container">
         <Typography className="about-description">Nova Booking</Typography>
         <Typography className="about-description">

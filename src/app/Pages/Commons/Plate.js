@@ -11,12 +11,15 @@ const Plate = (props) => {
       fontWeight: "500",
       color: "white",
     },
+    boxStyle: {
+      height: props.height === undefined ? "75vh" : props.height,
+    },
   };
 
   let content = props.children;
 
   return (
-    <Box className="plate">
+    <Box sx={styles.boxStyle} className="plate">
       <Box className="plate-title">
         <Typography sx={{ ...styles.columnTitleStyle }}>
           {props.title}

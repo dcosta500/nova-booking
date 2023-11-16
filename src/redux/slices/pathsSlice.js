@@ -5,6 +5,9 @@ const paths = {
   homePage: prefix.concat(""),
   profilePage: prefix.concat("/profile"),
   aboutPage: prefix.concat("/about"),
+  buildings: {
+    library: prefix.concat("/buildings/library"),
+  },
 };
 
 export const pathsSlice = createSlice({
@@ -13,6 +16,7 @@ export const pathsSlice = createSlice({
     homePage: paths.homePage,
     profilePage: paths.profilePage,
     aboutPage: paths.aboutPage,
+    libraryPage: paths.buildings.library,
   },
   reducers: {},
 });
