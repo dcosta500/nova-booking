@@ -6,8 +6,12 @@ import NovaButton from "../../Commons/NovaButton";
 import "./Library.css";
 import { useState } from "react";
 import { red } from "@mui/material/colors";
+import ItemsList from "../../Commons/ItemsList";
+import { useSelector } from "react-redux";
 
 const Library = (props) => {
+  const buildings = useSelector((state) => state.buildings);
+
   const [subPage, setSubPage] = useState(undefined);
   const [tabValue, setTabValue] = useState("groupRooms");
 
@@ -51,7 +55,11 @@ const Library = (props) => {
 
   const booksContent = <Typography>Books content</Typography>;
 
-  const materialsContent = <Typography>Materials content</Typography>;
+  const materialsContent = (
+    <Box className="library-materials-content-itemlist-container">
+      <ItemsList height="100%" items={buildings.library.materials} />
+    </Box>
+  );
 
   const groupRoomsContent = <Typography>Group Rooms content</Typography>;
 
