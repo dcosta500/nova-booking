@@ -1,0 +1,12 @@
+.nova-button {
+  width: 10.81rem;
+
+  color: black !important;
+  font-size: 1.1rem !important;
+
+  background-color: white !important;
+}
+
+.nova-button:hover {
+  background-color: #afafaf !important;
+}

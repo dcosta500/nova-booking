@@ -1,0 +1,84 @@
+.library-page-container {
+  display: flex;
+  flex-direction: row;
+
+  align-items: start;
+  justify-content: center;
+
+  padding: 1rem;
+  padding-top: 2rem;
+  width: 60rem;
+}
+
+.library-button {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.center-display {
+  display: flex;
+
+  align-items: start;
+  justify-content: center;
+
+  width: 30rem;
+  height: 50vh;
+  padding: 1rem;
+}
+
+.library-info-content {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: start;
+  align-items: center;
+
+  padding: 0.5rem;
+}
+
+.library-info-card {
+  height: 20vh;
+  width: 10.81rem;
+}
+
+.library-rooms-content {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: start;
+  align-items: center;
+
+  padding: 1rem;
+}
+
+.column-1 {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  width: 15rem;
+  height: 50vh;
+}
+
+.column-2 {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  width: 30rem;
+  height: 50vh;
+}
+
+.column-3 {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+
+  width: 15rem;
+  height: 50vh;
+}

@@ -6,9 +6,11 @@ import ContentColumn from "./ContentColumn";
 import "./HomePage.css";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import NovaButton from "../Commons/NovaButton";
 
 const HomePage = () => {
   const paths = useSelector((store) => store.paths);
+  const user = useSelector((store) => store.user);
   const navigate = useNavigate();
   const [mapImage, setMapImage] = React.useState("main");
 
@@ -24,12 +26,12 @@ const HomePage = () => {
 
   const buildings = [
     {
-      name: "Biblioteca",
+      name: "Library",
       mapName: "library",
       path: paths.libraryPage,
     },
     {
-      name: "Edifício 2",
+      name: "Building 2",
       mapName: "ed2",
       path: paths.homePage,
     },
@@ -47,14 +49,16 @@ const HomePage = () => {
         {buildings.map((building, key) => (
           <ListItem key={key}>
             <Box className="select-building-button-container">
-              <Button
+              <NovaButton
                 onMouseEnter={() => setMapImage(building.mapName)}
-                onClick={() => navigate(building.path)}
-                className="select-building-button"
-                variant="contained"
+                onClick={() =>
+                  navigate(
+                    user.name === undefined ? paths.profilePage : building.path
+                  )
+                }
               >
                 {building.name}
-              </Button>
+              </NovaButton>
             </Box>
           </ListItem>
         ))}
