@@ -6,6 +6,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import "dayjs/locale/pt";
 import NovaButton from "./NovaButton";
 import { useState } from "react";
+import dayjs from "dayjs";
 
 const DateStockPicker = (props) => {
   const itemName = props.itemName;
@@ -35,8 +36,10 @@ const DateStockPicker = (props) => {
 
   const onAcceptClick = () => {
     if (date !== undefined) {
-      onAccept(date, stock);
-      reset();
+      if (!date.isBefore(dayjs())) {
+        onAccept(date, stock);
+        reset();
+      }
     }
   };
 
@@ -69,7 +72,7 @@ const DateStockPicker = (props) => {
     <Box className="datestockpicker-right-picker-content">
       <Typography>Picking: {itemName}</Typography>
       <Box className="datestockpicker-datepicker-topbox">
-        <Typography>Date</Typography>
+        <Typography>Reservation until:</Typography>
         <Box height="0.5rem" />
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt">
           <DatePicker onChange={onDateChange} label="Date" />

@@ -1,4 +1,12 @@
-import { Box, Paper, Tab, Tabs, Typography } from "@mui/material";
+import {
+  Box,
+  List,
+  ListItem,
+  Paper,
+  Tab,
+  Tabs,
+  Typography,
+} from "@mui/material";
 import Page from "../../Commons/Page";
 import NovaButton from "../../Commons/NovaButton";
 
@@ -21,17 +29,18 @@ const Library = (props) => {
 
   const [item, setItem] = useState(undefined);
   const [showSuccess, setShowSuccess] = useState(undefined);
+  const [room, setRoom] = useState(undefined);
 
   const handleChange = (event, newValue) => {
     setTabValue(newValue);
   };
 
-  const handleSetSubpage = (subPage) => {
+  /* const handleSetSubpage = (subPage) => {
     switch (subPage) {
       case pages[0].id: //rooms
         break;
     }
-  };
+  }; */
 
   const onSelect = (item) => {
     if (item.stock > 0) {
@@ -40,11 +49,32 @@ const Library = (props) => {
     }
   };
 
-  const onCancelClick = () => {
+  const reset = () => {
     setItem(undefined);
+    setRoom(undefined);
   };
 
-  const onAcceptClick = (date, quantity) => {
+  const onCancelClick = () => {
+    reset();
+  };
+
+  const onRoomAcceptClick = (date) => {
+    setShowSuccess(true);
+
+    dispatch(
+      addReservation({
+        buildingId: buildings.library.id,
+        itemId: room.id,
+        date,
+        quantity: undefined,
+      })
+    );
+
+    setTimeout(() => setShowSuccess(false), 5000);
+    reset();
+  };
+
+  const onItemAcceptClick = (date, quantity) => {
     setShowSuccess(true);
 
     dispatch(
@@ -65,7 +95,7 @@ const Library = (props) => {
     );
 
     setTimeout(() => setShowSuccess(false), 5000);
-    setItem(undefined);
+    reset();
   };
 
   const paperStyle = {
@@ -92,9 +122,15 @@ const Library = (props) => {
     soloRooms: "soloRooms",
     agoraRoom: "agoraRoom", */
 
-  const buttons = pages.map((e, key) => (
+  const leftButtons = pages.map((e, key) => (
     <Box key={key} className="library-button">
-      <NovaButton onClick={() => setSubPage(e.id)} className="library-button">
+      <NovaButton
+        onClick={() => {
+          setSubPage(e.id);
+          reset();
+        }}
+        className="library-button"
+      >
         {e.title}
       </NovaButton>
     </Box>
@@ -183,7 +219,7 @@ const Library = (props) => {
 
   const buttonAndInfoColumn = (
     <Box className="column-1">
-      <Box className="library-button-section">{buttons}</Box>
+      <Box className="library-button-section">{leftButtons}</Box>
       <Box className="library-info-section">
         {subPage === "rooms" && (
           <Paper sx={paperStyle} className="library-info-card">
@@ -194,34 +230,73 @@ const Library = (props) => {
     </Box>
   );
 
-  const rightColumnPicker = () => {
-    if (showSuccess)
-      return (
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
+  const groupRoomsRightColumnContent = buildings.library.rooms.map((e, key) => (
+    <ListItem key={key}>
+      <Box className="library-right-button-container">
+        <NovaButton onClick={() => setRoom(e)} className="library-button">
+          {e.name}
+        </NovaButton>
+      </Box>
+    </ListItem>
+  ));
 
-            height: "100%",
-          }}
-        >
-          <CheckIcon />
-          <Typography>Reservation registered!</Typography>
-        </Box>
-      );
-    else if (item !== undefined)
-      return (
-        <DateStockPicker
-          doStock={true}
-          minStock={item.stock == 0 ? 0 : 1}
-          maxStock={item.stock}
-          itemName={item.name}
-          onCancel={onCancelClick}
-          onAccept={onAcceptClick}
-        />
-      );
+  const rightColumnPicker = () => {
+    if (subPage === "rooms") {
+      if (room !== undefined) {
+        return (
+          <DateStockPicker
+            doStock={false}
+            itemName={room.name}
+            onCancel={onCancelClick}
+            onAccept={onRoomAcceptClick}
+          />
+        );
+      } else
+        return (
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "start",
+
+              height: "100%",
+            }}
+          >
+            <List sx={{ overflowY: "scroll" }}>
+              {groupRoomsRightColumnContent}
+            </List>
+          </Box>
+        );
+    } else {
+      if (showSuccess)
+        return (
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+
+              height: "100%",
+            }}
+          >
+            <CheckIcon />
+            <Typography>Reservation registered!</Typography>
+          </Box>
+        );
+      else if (item !== undefined)
+        return (
+          <DateStockPicker
+            doStock={true}
+            minStock={item.stock == 0 ? 0 : 1}
+            maxStock={item.stock}
+            itemName={item.name}
+            onCancel={onCancelClick}
+            onAccept={onItemAcceptClick}
+          />
+        );
+    }
   };
 
   return (

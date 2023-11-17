@@ -4,11 +4,12 @@ import ContentColumn from "./ContentColumn";
 
 // css
 import "./HomePage.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import NovaButton from "../Commons/NovaButton";
 
 const HomePage = () => {
+  const dispatch = useDispatch();
   const paths = useSelector((store) => store.paths);
   const user = useSelector((store) => store.user);
   const buildings = useSelector((store) => store.buildings);
@@ -25,6 +26,15 @@ const HomePage = () => {
 
   const buttonListStyle = {
     overflowY: "scroll",
+  };
+
+  const metaStyles = {
+    fontSize: "0.85rem",
+  };
+
+  const retrieveReservations = () => {
+    if (user.name === undefined) return [];
+    return user.reservations.get(user.name);
   };
 
   const buildingsObj = [
@@ -55,7 +65,13 @@ const HomePage = () => {
       ).name;
     };
 
-    return user.reservations.map((r, key) => (
+    const retrieveItemName = (reservation) => {
+      let building = { ...buildings[reservation.buildingId] };
+      let item = building.items.find((e, idx) => e.id === reservation.itemId);
+      return item.name;
+    };
+
+    return retrieveReservations().map((r, key) => (
       <Box className="reservation-container" key={key}>
         <Paper>
           <Box className="reservation-inner-container">
@@ -66,12 +82,19 @@ const HomePage = () => {
               />
             </Box>
             <Box className="reservation-metadata">
-              <Typography>Deadline:</Typography>
-              <Typography sx={{ fontWeight: "bold" }}>
-                {r.date.format("DD-MM-YYYY")}
-              </Typography>
-              <Typography>Building: {retrieveBuildingName(r)}</Typography>
-              <Typography>Quantity: {r.quantity}</Typography>
+              <Box>
+                <Typography sx={metaStyles}>{retrieveItemName(r)}</Typography>
+                {}
+                <Typography sx={{ color: "grey", ...metaStyles }}>
+                  {retrieveBuildingName(r)} - Qty: {r.quantity}
+                </Typography>
+              </Box>
+              <Box>
+                <Typography>Deadline:</Typography>
+                <Typography sx={{ fontWeight: "bold" }}>
+                  {r.date.format("DD-MM-YYYY")}
+                </Typography>
+              </Box>
             </Box>
           </Box>
         </Paper>
@@ -82,7 +105,7 @@ const HomePage = () => {
   let upcomingReservationsColumn = {
     title: "Upcoming Reservations",
     content:
-      user.reservations.length === 0 ? undefined : (
+      retrieveReservations().length === 0 ? undefined : (
         <List sx={buttonListStyle}>{upcomingReservationsContent()}</List>
       ),
   };

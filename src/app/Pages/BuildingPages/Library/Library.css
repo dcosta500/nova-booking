@@ -52,6 +52,11 @@
   align-items: center;
 }
 
+.library-right-button-container {
+  height: 100%;
+  padding: 0.5rem;
+}
+
 .library-datepicker-botbox {
   display: flex;
   flex-direction: row;

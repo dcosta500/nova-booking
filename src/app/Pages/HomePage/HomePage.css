@@ -61,7 +61,7 @@
   flex-direction: column;
 
   align-items: start;
-  justify-content: center;
+  justify-content: space-between;
 
   width: 100%;
 }
@@ -72,4 +72,8 @@
 
   padding-top: 0rem;
   padding-bottom: 0rem;
+}
+
+.reservation-image-container {
+  padding-right: 10px;
 }
