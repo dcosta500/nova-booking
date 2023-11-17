@@ -39,6 +39,33 @@
   background-color: #afafaf !important;
 }
 
+.reservation-container {
+  display: flex;
+  flex-direction: column;
+
+  width: 10.81rem;
+
+  padding: 0.5rem;
+}
+
+.reservation-inner-container {
+  display: flex;
+  flex-direction: row;
+
+  align-items: center;
+  justify-content: space-between;
+}
+
+.reservation-metadata {
+  display: flex;
+  flex-direction: column;
+
+  align-items: start;
+  justify-content: center;
+
+  width: 100%;
+}
+
 .select-building-button-container {
   display: flex;
   flex-direction: column;

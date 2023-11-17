@@ -1,4 +1,4 @@
-import { Box, Button, List, ListItem } from "@mui/material";
+import { Box, Button, List, ListItem, Paper, Typography } from "@mui/material";
 import * as React from "react";
 import ContentColumn from "./ContentColumn";
 
@@ -11,7 +11,10 @@ import NovaButton from "../Commons/NovaButton";
 const HomePage = () => {
   const paths = useSelector((store) => store.paths);
   const user = useSelector((store) => store.user);
+  const buildings = useSelector((store) => store.buildings);
+
   const navigate = useNavigate();
+
   const [mapImage, setMapImage] = React.useState("main");
 
   const maps = {
@@ -24,7 +27,7 @@ const HomePage = () => {
     overflowY: "scroll",
   };
 
-  const buildings = [
+  const buildingsObj = [
     {
       name: "Library",
       mapName: "library",
@@ -37,16 +40,56 @@ const HomePage = () => {
     },
   ];
 
+  const upcomingReservationsContent = () => {
+    const retrieveItemImage = (reservation) => {
+      let building = { ...buildings[reservation.buildingId] };
+
+      let item = building.items.find((e, idx) => e.id === reservation.itemId);
+
+      return item.image;
+    };
+
+    const retrieveBuildingName = (reservation) => {
+      return buildingsObj.find(
+        (e) => buildings[reservation.buildingId].id === e.mapName
+      ).name;
+    };
+
+    return user.reservations.map((r, key) => (
+      <Box className="reservation-container" key={key}>
+        <Paper>
+          <Box className="reservation-inner-container">
+            <Box className="reservation-image-container">
+              <img
+                style={{ height: "3rem", width: "3rem" }}
+                src={retrieveItemImage(r)}
+              />
+            </Box>
+            <Box className="reservation-metadata">
+              <Typography>Deadline:</Typography>
+              <Typography>{r.date.format("DD-MM-YYYY")}</Typography>
+              <Typography>Building: {retrieveBuildingName(r)}</Typography>
+              <Typography>Quantity: {r.quantity}</Typography>
+            </Box>
+          </Box>
+        </Paper>
+      </Box>
+    ));
+  };
+
   let upcomingReservationsColumn = {
     title: "Upcoming Reservations",
-    content: undefined,
+    content:
+      user.reservations.length === 0 ? undefined : (
+        <List sx={buttonListStyle}>{upcomingReservationsContent()}</List>
+      ),
   };
 
   let selectBuildingColumn = {
     title: "Select a Building",
     content: (
       <List sx={buttonListStyle}>
-        {buildings.map((building, key) => (
+        {buildingsObj.map((building, key) => (
           <ListItem key={key}>
             <Box className="select-building-button-container">
               <NovaButton

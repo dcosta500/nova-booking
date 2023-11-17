@@ -17,11 +17,27 @@ const DateStockPicker = (props) => {
   const maxStock = props.maxStock === undefined ? 1 : props.maxStock;
 
   const [stock, setStock] = useState(minStock);
+  const [date, setDate] = useState(undefined);
 
-  const onCancelClick = onCancel;
+  const reset = () => {
+    setStock(minStock);
+    setDate(undefined);
+  };
 
-  const onAcceptClick = (date, quantity) => {
-    onAccept(date, quantity);
+  const onCancelClick = () => {
+    reset();
+    onCancel();
+  };
+  const onDateChange = (date) => {
+    console.log(date);
+    setDate(date);
+  };
+
+  const onAcceptClick = () => {
+    if (date !== undefined) {
+      onAccept(date, stock);
+      reset();
+    }
   };
 
   const increaseStock = () => {
@@ -56,7 +72,7 @@ const DateStockPicker = (props) => {
         <Typography>Date</Typography>
         <Box height="0.5rem" />
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt">
-          <DatePicker label="Date" />
+          <DatePicker onChange={onDateChange} label="Date" />
         </LocalizationProvider>
       </Box>
       {doStock && stockContent}
@@ -64,10 +80,7 @@ const DateStockPicker = (props) => {
         <NovaButton width="6rem" onClick={onCancelClick}>
           Cancel
         </NovaButton>
-        <NovaButton
-          width="6rem"
-          onClick={() => onAcceptClick(undefined /*date*/, stock)}
-        >
+        <NovaButton width="6rem" onClick={onAcceptClick}>
           Accept
         </NovaButton>
       </Box>

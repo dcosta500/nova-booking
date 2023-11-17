@@ -9,6 +9,8 @@ import ItemsList from "../../Commons/ItemsList";
 import { useDispatch, useSelector } from "react-redux";
 import DateStockPicker from "../../Commons/DateStockPicker";
 import { decreaseStock } from "src/redux/slices/buildingsSlice";
+import { addReservation } from "src/redux/slices/userSlice";
+import CheckIcon from "@mui/icons-material/Check";
 
 const Library = (props) => {
   const dispatch = useDispatch();
@@ -18,6 +20,7 @@ const Library = (props) => {
   const [tabValue, setTabValue] = useState("groupRooms");
 
   const [item, setItem] = useState(undefined);
+  const [showSuccess, setShowSuccess] = useState(undefined);
 
   const handleChange = (event, newValue) => {
     setTabValue(newValue);
@@ -31,7 +34,10 @@ const Library = (props) => {
   };
 
   const onSelect = (item) => {
-    if (item.stock > 0) setItem(item);
+    if (item.stock > 0) {
+      setShowSuccess(false);
+      setItem(item);
+    }
   };
 
   const onCancelClick = () => {
@@ -39,6 +45,8 @@ const Library = (props) => {
   };
 
   const onAcceptClick = (date, quantity) => {
+    setShowSuccess(true);
+
     dispatch(
       decreaseStock({
         buildingId: buildings.library.id,
@@ -46,6 +54,17 @@ const Library = (props) => {
         quantity: quantity,
       })
     );
+
+    dispatch(
+      addReservation({
+        buildingId: buildings.library.id,
+        itemId: item.id,
+        date,
+        quantity,
+      })
+    );
+
+    setTimeout(() => setShowSuccess(false), 5000);
     setItem(undefined);
   };
 
@@ -163,6 +182,36 @@ const Library = (props) => {
     </Box>
   );
 
+  const rightColumnPicker = () => {
+    if (showSuccess)
+      return (
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+
+            height: "100%",
+          }}
+        >
+          <CheckIcon />
+          <Typography>Reservation registered!</Typography>
+        </Box>
+      );
+    else if (item !== undefined)
+      return (
+        <DateStockPicker
+          doStock={true}
+          minStock={item.stock == 0 ? 0 : 1}
+          maxStock={item.stock}
+          itemName={item.name}
+          onCancel={onCancelClick}
+          onAccept={onAcceptClick}
+        />
+      );
+  };
+
   return (
     <Page title="Library">
       <Box className="library-page-container">
@@ -174,16 +223,7 @@ const Library = (props) => {
         </Box>
         <Box className="column-3">
           <Paper sx={paperStyle} className="library-right-picker">
-            {item !== undefined && (
-              <DateStockPicker
-                doStock={true}
-                minStock={item.stock == 0 ? 0 : 1}
-                maxStock={item.stock}
-                itemName={item.name}
-                onCancel={onCancelClick}
-                onAccept={onAcceptClick}
-              />
-            )}
+            {rightColumnPicker()}
           </Paper>
         </Box>
       </Box>
