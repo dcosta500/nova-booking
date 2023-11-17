@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const debugPrint = (message, obj) => {
   console.log(`DEBUG MESSAGE: FROM BUILDING_SLICE, ${message}`);
@@ -102,20 +102,28 @@ export const buildingsSlice = createSlice({
     decreaseStock: (state, action) => {
       // action.payload = {buildingId, itemId, quantity}
       const payload = action.payload;
+      const currentState = current(state);
 
       // Find building
-      const building = state[`${payload.buildingId}`];
+      const building = { ...currentState[`${payload.buildingId}`] };
       if (building === undefined) return debugPrint("Building is undefined.");
 
       // Find item
-      const item = building.items.find((item) => (item.id = payload.itemId));
-      if (item === undefined) return debugPrint("Item is undefined.");
+      let itemIdx = -1;
+      building.items.find((item, index) => {
+        if (item.id == payload.itemId) {
+          itemIdx = index;
+          return true;
+        }
+      });
+
+      if (itemIdx === -1) return debugPrint("Item is undefined.");
 
       // Decrease stock
-      if (item.stock < payload.quantityToDecrease)
+      if (building.items[itemIdx].stock < payload.quantityToDecrease)
         return debugPrint("Not enough stock to fulfill request.");
 
-      item.stock -= payload.quantity;
+      state[building.id]["items"][itemIdx].stock -= payload.quantity;
     },
   },
 });

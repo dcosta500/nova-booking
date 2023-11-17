@@ -13,14 +13,16 @@ const DateStockPicker = (props) => {
   const onAccept = props.onAccept; // function
   const doStock = props.doStock; // boolean
 
-  const minStock = 1;
+  const minStock = props.minStock === undefined ? 1 : props.minStock;
   const maxStock = props.maxStock === undefined ? 1 : props.maxStock;
 
   const [stock, setStock] = useState(minStock);
 
   const onCancelClick = onCancel;
 
-  const onAcceptClick = onAccept;
+  const onAcceptClick = (date, quantity) => {
+    onAccept(date, quantity);
+  };
 
   const increaseStock = () => {
     if (stock + 1 <= maxStock) setStock(stock + 1);

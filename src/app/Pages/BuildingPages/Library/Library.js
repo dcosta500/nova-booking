@@ -31,15 +31,14 @@ const Library = (props) => {
   };
 
   const onSelect = (item) => {
-    setItem(item);
+    if (item.stock > 0) setItem(item);
   };
 
   const onCancelClick = () => {
-    onSelect(undefined);
+    setItem(undefined);
   };
 
   const onAcceptClick = (date, quantity) => {
-    onSelect(undefined);
     dispatch(
       decreaseStock({
         buildingId: buildings.library.id,
@@ -47,6 +46,7 @@ const Library = (props) => {
         quantity: quantity,
       })
     );
+    setItem(undefined);
   };
 
   const paperStyle = {
@@ -177,6 +177,7 @@ const Library = (props) => {
             {item !== undefined && (
               <DateStockPicker
                 doStock={true}
+                minStock={item.stock == 0 ? 0 : 1}
                 maxStock={item.stock}
                 itemName={item.name}
                 onCancel={onCancelClick}
