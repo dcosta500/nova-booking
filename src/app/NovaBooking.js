@@ -10,6 +10,7 @@ import Footer from "./Footer/Footer";
 import AboutPage from "./Pages/About/AboutPage";
 import { useSelector } from "react-redux";
 import Library from "./Pages/BuildingPages/Library/Library";
+import MyReservations from "./Pages/MyReservations/MyReservations";
 
 const NovaBooking = () => {
   const paths = useSelector((store) => store.paths);
@@ -23,6 +24,7 @@ const NovaBooking = () => {
           <Route path={paths.profilePage} element={<ProfilePage />} />
           <Route path={paths.aboutPage} element={<AboutPage />} />
           <Route path={paths.libraryPage} element={<Library />} />
+          <Route path={paths.myReservationsPage} element={<MyReservations />} />
         </Routes>
       </div>
       <Footer />

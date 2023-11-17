@@ -49,11 +49,11 @@ const Navbar = () => {
             onClick={() =>
               user.name == undefined
                 ? navigate(paths.profilePage)
-                : navigate(paths.homePage)
+                : navigate(paths.myReservationsPage)
             }
             sx={{ ...buttonTextStyle, color: teal }}
           >
-            Reservations
+            My Reservations
           </Typography>
           <Typography
             onClick={() => navigate(paths.aboutPage)}

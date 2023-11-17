@@ -127,7 +127,18 @@ const HomePage = () => {
     title: "Upcoming Reservations",
     content:
       retrieveReservations().length === 0 ? undefined : (
-        <List sx={buttonListStyle}>{upcomingReservationsContent()}</List>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "start",
+            alignItems: "center",
+            overflowY: "scroll",
+            width: "100%",
+          }}
+        >
+          {upcomingReservationsContent()}
+        </Box>
       ),
   };
 
