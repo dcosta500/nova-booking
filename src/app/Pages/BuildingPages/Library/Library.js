@@ -102,13 +102,25 @@ const Library = (props) => {
 
   const noneContent = <Typography>Select an Option</Typography>;
 
-  const booksContent = <Typography>Books content</Typography>;
+  const booksContent = (
+    <Box className="library-materials-content-itemlist-container">
+      <ItemsList
+        height="100%"
+        items={buildings.library.items.filter((item) =>
+          item.id.startsWith("book")
+        )}
+        onSelect={onSelect}
+      />
+    </Box>
+  );
 
   const materialsContent = (
     <Box className="library-materials-content-itemlist-container">
       <ItemsList
         height="100%"
-        items={buildings.library.items}
+        items={buildings.library.items.filter((item) =>
+          item.id.startsWith("mat")
+        )}
         onSelect={onSelect}
       />
     </Box>

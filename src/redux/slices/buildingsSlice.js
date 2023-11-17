@@ -32,6 +32,7 @@ const imgs = {
     },
     materials: {
       erlenmeyer: require("src/images/materials/erlenmeyer.png"),
+      book: require("src/images/materials/book.png"),
     },
   },
   ed2: {
@@ -57,21 +58,39 @@ const library = {
   ],
   items: [
     itemModel(
-      "erm_50",
+      "mat_erm_50",
       "Erlenmeyer 50ml",
       imgs.library.materials.erlenmeyer,
       5
     ),
     itemModel(
-      "erm_100",
+      "mat_erm_100",
       "Erlenmeyer 100ml",
       imgs.library.materials.erlenmeyer,
       5
     ),
     itemModel(
-      "erm_150",
+      "mat_erm_150",
       "Erlenmeyer 150ml",
       imgs.library.materials.erlenmeyer,
+      5
+    ),
+    itemModel(
+      "book_hp_1",
+      "Harry Potter and the Philosopher's Stone",
+      imgs.library.materials.book,
+      10
+    ),
+    itemModel(
+      "book_hp_2",
+      "Harry Potter and the Chamber of Secrets",
+      imgs.library.materials.book,
+      8
+    ),
+    itemModel(
+      "book_hp_3",
+      "Harry Potter and the Prisoner of Azkaban",
+      imgs.library.materials.book,
       5
     ),
   ],
@@ -86,9 +105,24 @@ const ed2 = {
     roomModel("114", "30", imgs.ed2.rooms.r114),
   ],
   items: [
-    itemModel("erm_50", "Erlenmeyer 50ml", imgs.ed2.materials.erlenmeyer, 5),
-    itemModel("erm_100", "Erlenmeyer 100ml", imgs.ed2.materials.erlenmeyer, 5),
-    itemModel("erm_150", "Erlenmeyer 150ml", imgs.ed2.materials.erlenmeyer, 5),
+    itemModel(
+      "mat_erm_50",
+      "Erlenmeyer 50ml",
+      imgs.ed2.materials.erlenmeyer,
+      5
+    ),
+    itemModel(
+      "mat_erm_100",
+      "Erlenmeyer 100ml",
+      imgs.ed2.materials.erlenmeyer,
+      5
+    ),
+    itemModel(
+      "mat_erm_150",
+      "Erlenmeyer 150ml",
+      imgs.ed2.materials.erlenmeyer,
+      5
+    ),
   ],
 };
 

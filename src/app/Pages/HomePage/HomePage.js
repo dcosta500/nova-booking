@@ -67,7 +67,9 @@ const HomePage = () => {
             </Box>
             <Box className="reservation-metadata">
               <Typography>Deadline:</Typography>
-              <Typography>{r.date.format("DD-MM-YYYY")}</Typography>
+              <Typography sx={{ fontWeight: "bold" }}>
+                {r.date.format("DD-MM-YYYY")}
+              </Typography>
               <Typography>Building: {retrieveBuildingName(r)}</Typography>
               <Typography>Quantity: {r.quantity}</Typography>
             </Box>
