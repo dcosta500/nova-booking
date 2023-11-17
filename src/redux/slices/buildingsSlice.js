@@ -27,7 +27,6 @@ const itemModel = (id, name, image, stock) => {
 
 const imgs = {
   library: {
-    name: "Library",
     rooms: {
       r127: require("src/images/buildings/ed2/ed2-plant-127.png"),
       r128: require("src/images/buildings/ed2/ed2-plant-128.png"),
@@ -41,7 +40,6 @@ const imgs = {
     },
   },
   ed2: {
-    name: "Building 2",
     rooms: {
       r127: require("src/images/buildings/ed2/ed2-plant-127.png"),
       r128: require("src/images/buildings/ed2/ed2-plant-128.png"),
@@ -55,6 +53,7 @@ const imgs = {
 };
 
 const library = {
+  name: "Library",
   id: "library",
   rooms: [
     roomModel(
@@ -127,6 +126,7 @@ const library = {
 };
 
 const ed2 = {
+  name: "Building 2",
   id: "ed2",
   rooms: [
     roomModel("room_127", "Room 127", "150", imgs.ed2.rooms.r127),
