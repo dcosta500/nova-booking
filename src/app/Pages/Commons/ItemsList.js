@@ -13,7 +13,7 @@ import "./ItemsList.css";
 const ItemsList = (props) => {
   const listItems = props.items.map((item, key) => (
     <ListItem key={key} disablePadding>
-      <ListItemButton>
+      <ListItemButton onClick={() => props.onSelect(item)}>
         <Box className="itemslist-button-container">
           <Box className="itemslist-img">
             <img
@@ -24,7 +24,7 @@ const ItemsList = (props) => {
           <Box className="itemlist-item-info">
             <ListItemText primary={item.name} />
             <Typography sx={{ fontSize: "0.9rem", color: "#313131" }}>
-              Stock: {item.stock}
+              {item.stock > 0 ? `Stock: ${item.stock}` : "No stock left."}
             </Typography>
           </Box>
         </Box>

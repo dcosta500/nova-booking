@@ -1,30 +1,52 @@
 import { Box, Paper, Tab, Tabs, Typography } from "@mui/material";
 import Page from "../../Commons/Page";
 import NovaButton from "../../Commons/NovaButton";
-import dayjs from "dayjs";
-
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import "dayjs/locale/pt";
 
 // css
 import "./Library.css";
 import { useState } from "react";
 import ItemsList from "../../Commons/ItemsList";
-import { useSelector } from "react-redux";
-import {
-  DatePicker,
-  DateTimePicker,
-  LocalizationProvider,
-} from "@mui/x-date-pickers";
+import { useDispatch, useSelector } from "react-redux";
+import DateStockPicker from "../../Commons/DateStockPicker";
+import { decreaseStock } from "src/redux/slices/buildingsSlice";
 
 const Library = (props) => {
+  const dispatch = useDispatch();
   const buildings = useSelector((state) => state.buildings);
 
   const [subPage, setSubPage] = useState(undefined);
   const [tabValue, setTabValue] = useState("groupRooms");
 
+  const [item, setItem] = useState(undefined);
+
   const handleChange = (event, newValue) => {
     setTabValue(newValue);
+  };
+
+  const handleSetSubpage = (subPage) => {
+    switch (subPage) {
+      case pages[0].id: //rooms
+        break;
+    }
+  };
+
+  const onSelect = (item) => {
+    setItem(item);
+  };
+
+  const onCancelClick = () => {
+    onSelect(undefined);
+  };
+
+  const onAcceptClick = (date, quantity) => {
+    onSelect(undefined);
+    dispatch(
+      decreaseStock({
+        buildingId: buildings.library.id,
+        itemId: item.id,
+        quantity: quantity,
+      })
+    );
   };
 
   const paperStyle = {
@@ -65,7 +87,11 @@ const Library = (props) => {
 
   const materialsContent = (
     <Box className="library-materials-content-itemlist-container">
-      <ItemsList height="100%" items={buildings.library.materials} />
+      <ItemsList
+        height="100%"
+        items={buildings.library.items}
+        onSelect={onSelect}
+      />
     </Box>
   );
 
@@ -137,12 +163,6 @@ const Library = (props) => {
     </Box>
   );
 
-  const pickerContent = (
-    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt">
-      <DatePicker label="Date" />
-    </LocalizationProvider>
-  );
-
   return (
     <Page title="Library">
       <Box className="library-page-container">
@@ -154,10 +174,15 @@ const Library = (props) => {
         </Box>
         <Box className="column-3">
           <Paper sx={paperStyle} className="library-right-picker">
-            <Box className="library-right-picker-content">
-              <Typography>Picker Content</Typography>
-              {pickerContent}
-            </Box>
+            {item !== undefined && (
+              <DateStockPicker
+                doStock={true}
+                maxStock={item.stock}
+                itemName={item.name}
+                onCancel={onCancelClick}
+                onAccept={onAcceptClick}
+              />
+            )}
           </Paper>
         </Box>
       </Box>

@@ -13,7 +13,7 @@ const roomModel = (name, maxOcupation, image) => {
   };
 };
 
-const materialModel = (id, name, image, stock) => {
+const itemModel = (id, name, image, stock) => {
   return {
     id,
     name,
@@ -48,27 +48,27 @@ const imgs = {
 };
 
 const library = {
-  id: "ed2",
+  id: "library",
   rooms: [
     roomModel("127", "150", imgs.library.rooms.r127),
     roomModel("128", "150", imgs.library.rooms.r128),
     roomModel("107", "15", imgs.library.rooms.r107),
     roomModel("114", "30", imgs.library.rooms.r114),
   ],
-  materials: [
-    materialModel(
+  items: [
+    itemModel(
       "erm_50",
       "Erlenmeyer 50ml",
       imgs.library.materials.erlenmeyer,
       5
     ),
-    materialModel(
+    itemModel(
       "erm_100",
       "Erlenmeyer 100ml",
       imgs.library.materials.erlenmeyer,
       5
     ),
-    materialModel(
+    itemModel(
       "erm_150",
       "Erlenmeyer 150ml",
       imgs.library.materials.erlenmeyer,
@@ -85,25 +85,10 @@ const ed2 = {
     roomModel("107", "15", imgs.ed2.rooms.r107),
     roomModel("114", "30", imgs.ed2.rooms.r114),
   ],
-  materials: [
-    materialModel(
-      "erm_50",
-      "Erlenmeyer 50ml",
-      imgs.ed2.materials.erlenmeyer,
-      5
-    ),
-    materialModel(
-      "erm_100",
-      "Erlenmeyer 100ml",
-      imgs.ed2.materials.erlenmeyer,
-      5
-    ),
-    materialModel(
-      "erm_150",
-      "Erlenmeyer 150ml",
-      imgs.ed2.materials.erlenmeyer,
-      5
-    ),
+  items: [
+    itemModel("erm_50", "Erlenmeyer 50ml", imgs.ed2.materials.erlenmeyer, 5),
+    itemModel("erm_100", "Erlenmeyer 100ml", imgs.ed2.materials.erlenmeyer, 5),
+    itemModel("erm_150", "Erlenmeyer 150ml", imgs.ed2.materials.erlenmeyer, 5),
   ],
 };
 
@@ -115,24 +100,22 @@ export const buildingsSlice = createSlice({
   },
   reducers: {
     decreaseStock: (state, action) => {
-      // action.payload = {buildingId, materialId, quantityToDecrease}
+      // action.payload = {buildingId, itemId, quantity}
       const payload = action.payload;
 
       // Find building
-      const building = state.find((b) => b.id === payload.buildingId);
+      const building = state[`${payload.buildingId}`];
       if (building === undefined) return debugPrint("Building is undefined.");
 
-      // Find material
-      const material = building.materials.find(
-        (material) => (material.id = payload.materialId)
-      );
-      if (material === undefined) return debugPrint("Material is undefined.");
+      // Find item
+      const item = building.items.find((item) => (item.id = payload.itemId));
+      if (item === undefined) return debugPrint("Item is undefined.");
 
       // Decrease stock
-      if (material.stock < payload.quantityToDecrease)
+      if (item.stock < payload.quantityToDecrease)
         return debugPrint("Not enough stock to fulfill request.");
 
-      material.stock -= payload.quantityToDecrease;
+      item.stock -= payload.quantity;
     },
   },
 });

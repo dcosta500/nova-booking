@@ -1,0 +1,35 @@
+.datestockpicker-right-picker-content {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: space-between;
+
+  width: 40rem;
+  height: 44vh;
+  padding: 1rem;
+}
+
+.datestockpicker-datepicker-topbox {
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+}
+
+.datestockpicker-datepicker-botbox {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: space-between;
+
+  width: 14rem;
+}
+
+.datestockpicker-stock-container {
+  display: flex;
+  flex-direction: row-reverse;
+
+  align-items: center;
+  justify-content: space-between;
+}
