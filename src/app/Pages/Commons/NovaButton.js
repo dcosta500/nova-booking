@@ -5,6 +5,7 @@ import "./NovaButton.css";
 const NovaButton = (props) => {
   return (
     <Button
+      sx={{ width: props.width }}
       onMouseEnter={props.onMouseEnter}
       onClick={props.onClick}
       className="nova-button"

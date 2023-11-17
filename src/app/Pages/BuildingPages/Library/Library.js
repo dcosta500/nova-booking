@@ -1,13 +1,21 @@
 import { Box, Paper, Tab, Tabs, Typography } from "@mui/material";
 import Page from "../../Commons/Page";
 import NovaButton from "../../Commons/NovaButton";
+import dayjs from "dayjs";
+
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import "dayjs/locale/pt";
 
 // css
 import "./Library.css";
 import { useState } from "react";
-import { red } from "@mui/material/colors";
 import ItemsList from "../../Commons/ItemsList";
 import { useSelector } from "react-redux";
+import {
+  DatePicker,
+  DateTimePicker,
+  LocalizationProvider,
+} from "@mui/x-date-pickers";
 
 const Library = (props) => {
   const buildings = useSelector((state) => state.buildings);
@@ -129,6 +137,12 @@ const Library = (props) => {
     </Box>
   );
 
+  const pickerContent = (
+    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt">
+      <DatePicker label="Date" />
+    </LocalizationProvider>
+  );
+
   return (
     <Page title="Library">
       <Box className="library-page-container">
@@ -142,6 +156,7 @@ const Library = (props) => {
           <Paper sx={paperStyle} className="library-right-picker">
             <Box className="library-right-picker-content">
               <Typography>Picker Content</Typography>
+              {pickerContent}
             </Box>
           </Paper>
         </Box>

@@ -35,9 +35,10 @@
 
 .library-right-picker-content {
   display: flex;
+  flex-direction: column;
 
-  align-items: start;
-  justify-content: center;
+  align-items: center;
+  justify-content: start;
 
   width: 30rem;
   height: 50vh;
