@@ -25,33 +25,27 @@ const Library = (props) => {
   const buildings = useSelector((state) => state.buildings);
 
   const [subPage, setSubPage] = useState(undefined);
-  const [tabValue, setTabValue] = useState("groupRooms");
+  const [tabValue, setTabValue] = useState("gr");
 
   const [item, setItem] = useState(undefined);
   const [showSuccess, setShowSuccess] = useState(undefined);
   const [room, setRoom] = useState(undefined);
 
-  const handleChange = (event, newValue) => {
-    setTabValue(newValue);
+  const reset = () => {
+    setItem(undefined);
+    setRoom(undefined);
   };
 
-  /* const handleSetSubpage = (subPage) => {
-    switch (subPage) {
-      case pages[0].id: //rooms
-        break;
-    }
-  }; */
+  const handleChange = (event, newValue) => {
+    reset();
+    setTabValue(newValue);
+  };
 
   const onSelect = (item) => {
     if (item.stock > 0) {
       setShowSuccess(false);
       setItem(item);
     }
-  };
-
-  const reset = () => {
-    setItem(undefined);
-    setRoom(undefined);
   };
 
   const onCancelClick = () => {
@@ -178,9 +172,41 @@ const Library = (props) => {
     </Box>
   );
 
-  const groupRoomsContent = <Typography>Group Rooms content</Typography>;
+  const groupRoomsContent = (
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "80%",
+      }}
+    >
+      <img
+        style={{ height: "12rem" }}
+        src={buildings.library.groupRoomsMap}
+        alt="group_rooms_map"
+      />
+    </Box>
+  );
 
-  const soloRoomsContent = <Typography>Solo Rooms content</Typography>;
+  const soloRoomsContent = (
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "80%",
+      }}
+    >
+      <img
+        style={{ height: "12rem" }}
+        src={buildings.library.soloRoomsMap}
+        alt="solo_rooms_map"
+      />
+    </Box>
+  );
 
   const preguicodromoContent = <Typography>Preguiçodromo Content</Typography>;
 
@@ -188,13 +214,13 @@ const Library = (props) => {
 
   const roomsScreen = () => {
     switch (tabValue) {
-      case "groupRooms":
+      case "gr":
         return groupRoomsContent;
-      case "soloRooms":
+      case "sr":
         return soloRoomsContent;
-      case "preguicodromo":
+      case "pr":
         return preguicodromoContent;
-      case "agoraRoom":
+      case "ag":
         return agoraRoomContent;
     }
   };
@@ -210,10 +236,10 @@ const Library = (props) => {
           textColor="inherit"
           indicatorColor="inherit"
         >
-          <Tab value="groupRooms" label="Group Rooms" />
-          <Tab value="soloRooms" label="Solo Rooms" />
-          <Tab value="preguicodromo" label="Preguiçodromo" />
-          <Tab value="agoraRoom" label="Ágora Room" />
+          <Tab value="gr" label="Group Rooms" />
+          <Tab value="sr" label="Solo Rooms" />
+          <Tab value="pr" label="Preguiçodromo" />
+          <Tab value="ag" label="Ágora Room" />
         </Tabs>
       </Box>
       <Box className="library-rooms-content">{roomsScreen()}</Box>
@@ -246,15 +272,33 @@ const Library = (props) => {
     </Box>
   );
 
-  const groupRoomsRightColumnContent = buildings.library.rooms.map((e, key) => (
-    <ListItem key={key}>
-      <Box className="library-right-button-container">
-        <NovaButton onClick={() => setRoom(e)} className="library-button">
-          {e.name}
-        </NovaButton>
-      </Box>
-    </ListItem>
-  ));
+  const roomsRightColumnContent = () => {
+    let lst = buildings.library.rooms.filter((e) =>
+      e.id.startsWith(`room_${tabValue}`)
+    );
+    if (lst.length === 0) return undefined;
+    else
+      return (
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "start",
+            height: "100%",
+            overflowY: "scroll",
+          }}
+        >
+          {lst.map((e, key) => (
+            <Box key={key} className="library-right-button-container">
+              <NovaButton onClick={() => setRoom(e)} className="library-button">
+                {e.name}
+              </NovaButton>
+            </Box>
+          ))}
+        </Box>
+      );
+  };
 
   const rightColumnPicker = () => {
     if (subPage === "rooms") {
@@ -283,23 +327,7 @@ const Library = (props) => {
             onAccept={onRoomAcceptClick}
           />
         );
-      } else
-        return (
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "start",
-
-              height: "100%",
-            }}
-          >
-            <List sx={{ overflowY: "scroll" }}>
-              {groupRoomsRightColumnContent}
-            </List>
-          </Box>
-        );
+      } else return roomsRightColumnContent();
     } else {
       if (showSuccess)
         return (
@@ -341,7 +369,10 @@ const Library = (props) => {
           </Paper>
         </Box>
         <Box className="column-3">
-          <Paper sx={paperStyle} className="library-right-picker">
+          <Paper
+            sx={{ height: "50vh", ...paperStyle }}
+            className="library-right-picker"
+          >
             {rightColumnPicker()}
           </Paper>
         </Box>

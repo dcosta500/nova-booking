@@ -53,7 +53,6 @@
 }
 
 .library-right-button-container {
-  height: 100%;
   padding: 0.5rem;
 }
 
@@ -91,6 +90,10 @@
   width: 16rem;
 }
 
+.library-rooms-content-container {
+  height: 100%;
+}
+
 .library-rooms-content {
   display: flex;
   flex-direction: column;
@@ -99,6 +102,7 @@
   align-items: center;
 
   padding: 1rem;
+  height: 100%;
 }
 
 .column-1 {

@@ -101,11 +101,23 @@ const MyReservations = (props) => {
   };
 
   const contentPicker = () => {
-    const res = retrieveReservations();
-    if (res.length === 0) return <Typography>None</Typography>;
-    return res
-      .filter((e) => e.itemId.startsWith(tab))
-      .map((e, key) => createReservationCard(e, key));
+    const res = retrieveReservations().filter((e) => e.itemId.startsWith(tab));
+    if (res.length === 0) return <Box sx={{}}>None</Box>;
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "start",
+          alignItems: "center",
+          width: "90%",
+          height: "100%",
+          overflowY: "scroll",
+        }}
+      >
+        {res.map((e, key) => createReservationCard(e, key))}
+      </Box>
+    );
   };
 
   return (
@@ -134,19 +146,7 @@ const MyReservations = (props) => {
           width: "100%",
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "start",
-            alignItems: "center",
-            width: "90%",
-            height: "100%",
-            overflowY: "scroll",
-          }}
-        >
-          {contentPicker()}
-        </Box>
+        {contentPicker()}
       </Box>
     </Page>
   );

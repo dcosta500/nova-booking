@@ -8,7 +8,7 @@ const paths = {
   profilePage: prefix.concat("/profile"),
   buildings: {
     library: prefix.concat("/buildings/library"),
-    ed2: prefix.concat("/buildings/library"),
+    ed2: prefix.concat("/buildings/building2"),
   },
 };
 

@@ -28,10 +28,8 @@ const itemModel = (id, name, image, stock) => {
 const imgs = {
   library: {
     rooms: {
-      r127: require("src/images/buildings/ed2/ed2-plant-127.png"),
-      r128: require("src/images/buildings/ed2/ed2-plant-128.png"),
-      r107: require("src/images/buildings/ed2/ed2-plant-107.png"),
-      r114: require("src/images/buildings/ed2/ed2-plant-114.png"),
+      soloRooms: require("src/images/buildings/library/solo_rooms.png"),
+      groupRooms: require("src/images/buildings/library/group_rooms.png"),
     },
     materials: {
       erlenmeyer: require("src/images/materials/erlenmeyer.png"),
@@ -55,35 +53,66 @@ const imgs = {
 const library = {
   name: "Library",
   id: "library",
+  soloRoomsMap: imgs.library.rooms.soloRooms,
+  groupRoomsMap: imgs.library.rooms.groupRooms,
   rooms: [
+    // Individual Rooms
+    roomModel("room_sr1", "Individual Room 1", 1, imgs.library.materials.room),
+    roomModel("room_sr2", "Individual Room 2", 1, imgs.library.materials.room),
+    roomModel("room_sr3", "Individual Room 3", 1, imgs.library.materials.room),
+    roomModel("room_sr4", "Individual Room 4", 1, imgs.library.materials.room),
+    roomModel("room_sr5", "Individual Room 5", 1, imgs.library.materials.room),
+    roomModel("room_sr6", "Individual Room 6", 1, imgs.library.materials.room),
+    roomModel("room_sr7", "Individual Room 7", 1, imgs.library.materials.room),
+    roomModel("room_sr8", "Individual Room 8", 1, imgs.library.materials.room),
+    roomModel("room_sr9", "Individual Room 9", 1, imgs.library.materials.room),
     roomModel(
-      "room_127",
-      "Room 127",
-      "150",
-      imgs.library.materials.room,
-      imgs.library.rooms.r127
+      "room_sr10",
+      "Individual Room 10",
+      1,
+      imgs.library.materials.room
     ),
     roomModel(
-      "room_128",
-      "Room 128",
-      "150",
-      imgs.library.materials.room,
-      imgs.library.rooms.r128
+      "room_sr11",
+      "Individual Room 11",
+      1,
+      imgs.library.materials.room
     ),
     roomModel(
-      "room_107",
-      "Room 107",
-      "15",
-      imgs.library.materials.room,
-      imgs.library.rooms.r107
+      "room_sr12",
+      "Individual Room 12",
+      1,
+      imgs.library.materials.room
     ),
     roomModel(
-      "room_114",
-      "Room 114",
-      "30",
-      imgs.library.materials.room,
-      imgs.library.rooms.r114
+      "room_sr13",
+      "Individual Room 13",
+      1,
+      imgs.library.materials.room
     ),
+    roomModel(
+      "room_sr14",
+      "Individual Room 14",
+      1,
+      imgs.library.materials.room
+    ),
+    roomModel(
+      "room_sr15",
+      "Individual Room 15",
+      1,
+      imgs.library.materials.room
+    ),
+    roomModel(
+      "room_sr16",
+      "Individual Room 16",
+      1,
+      imgs.library.materials.room
+    ),
+    // Group Rooms
+    roomModel("room_gr1", "Group Room 1", 8, imgs.library.materials.room),
+    roomModel("room_gr2", "Group Room 2", 8, imgs.library.materials.room),
+    roomModel("room_gr3", "Group Room 3", 8, imgs.library.materials.room),
+    roomModel("room_gr4", "Group Room 4", 8, imgs.library.materials.room),
   ],
   items: [
     itemModel(

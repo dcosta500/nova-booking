@@ -50,7 +50,7 @@ const HomePage = () => {
     {
       name: "Building 2",
       mapName: "ed2",
-      path: paths.homePage,
+      path: paths.ed2,
     },
   ];
 

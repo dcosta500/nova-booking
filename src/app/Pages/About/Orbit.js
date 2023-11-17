@@ -15,31 +15,31 @@ const Orbit = () => {
     <Box className="about-container">
       <div id="circle-orbit-container">
         <div id="inner-orbit">
-          <div class="inner-orbit-cirlces">
-            <img class="orbit-image" src={imgs.pina} />
+          <div className="inner-orbit-cirlces">
+            <img className="orbit-image" src={imgs.pina} />
           </div>
         </div>
 
         <div id="middle-orbit">
-          <div class="middle-orbit-cirlces">
-            <img class="orbit-image" src={imgs.jose} />
+          <div className="middle-orbit-cirlces">
+            <img className="orbit-image" src={imgs.jose} />
           </div>
         </div>
 
         <div id="outer-orbit">
-          <div class="outer-orbit-cirlces">
-            <img class="orbit-image" src={imgs.lemos} />
+          <div className="outer-orbit-cirlces">
+            <img className="orbit-image" src={imgs.lemos} />
           </div>
         </div>
 
         <div id="outermost-orbit">
-          <div class="outermost-orbit-cirlces">
-            <img class="orbit-image" src={imgs.costa} />
+          <div className="outermost-orbit-cirlces">
+            <img className="orbit-image" src={imgs.costa} />
           </div>
         </div>
 
         <div id="logo-center-container">
-          <img class="logo-center-img" src={imgs.logo} alt="Logo Center" />
+          <img className="logo-center-img" src={imgs.logo} alt="Logo Center" />
         </div>
       </div>
     </Box>
