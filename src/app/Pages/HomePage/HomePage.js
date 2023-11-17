@@ -33,7 +33,11 @@ const HomePage = () => {
   };
 
   const retrieveReservations = () => {
-    if (user.name === undefined) return [];
+    if (
+      user.name === undefined ||
+      user.reservations.get(user.name) === undefined
+    )
+      return [];
     return user.reservations.get(user.name);
   };
 
