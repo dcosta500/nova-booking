@@ -31,6 +31,8 @@ export const userSlice = createSlice({
         res.sort((a, b) => {
           return a.date.isBefore(b.date) ? -1 : 1;
         });
+
+        console.log("Reservation added.");
       }
     },
   },

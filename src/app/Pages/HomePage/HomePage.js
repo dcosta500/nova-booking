@@ -58,21 +58,37 @@ const HomePage = () => {
     const retrieveItemImage = (reservation) => {
       let building = { ...buildings[reservation.buildingId] };
 
-      let item = building.items.find((e, idx) => e.id === reservation.itemId);
+      let image;
+      if (reservation.itemId.startsWith("room"))
+        image = building.rooms.find(
+          (e, idx) => e.id === reservation.itemId
+        ).image;
+      else
+        image = building.items.find(
+          (e, idx) => e.id === reservation.itemId
+        ).image;
 
-      return item.image;
+      return image;
     };
 
     const retrieveBuildingName = (reservation) => {
-      return buildingsObj.find(
-        (e) => buildings[reservation.buildingId].id === e.mapName
-      ).name;
+      return buildings[reservation.buildingId].name;
     };
 
     const retrieveItemName = (reservation) => {
       let building = { ...buildings[reservation.buildingId] };
-      let item = building.items.find((e, idx) => e.id === reservation.itemId);
-      return item.name;
+
+      let name;
+      if (reservation.itemId.startsWith("room"))
+        name = building.rooms.find(
+          (e, idx) => e.id === reservation.itemId
+        ).name;
+      else
+        name = building.items.find(
+          (e, idx) => e.id === reservation.itemId
+        ).name;
+
+      return name;
     };
 
     return retrieveReservations().map((r, key) => (
@@ -90,7 +106,8 @@ const HomePage = () => {
                 <Typography sx={metaStyles}>{retrieveItemName(r)}</Typography>
                 {}
                 <Typography sx={{ color: "grey", ...metaStyles }}>
-                  {retrieveBuildingName(r)} - Qty: {r.quantity}
+                  {retrieveBuildingName(r)}{" "}
+                  {!r.itemId.startsWith("room") && "- Qty:"} {r.quantity}
                 </Typography>
               </Box>
               <Box>

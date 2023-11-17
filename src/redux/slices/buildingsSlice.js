@@ -6,12 +6,13 @@ const debugPrint = (message, obj) => {
   return "debug_print";
 };
 
-const roomModel = (id, name, maxOcupation, image) => {
+const roomModel = (id, name, maxOcupation, image, picture) => {
   return {
     id,
     name,
     maxOcupation,
     image,
+    picture,
   };
 };
 
@@ -26,6 +27,7 @@ const itemModel = (id, name, image, stock) => {
 
 const imgs = {
   library: {
+    name: "Library",
     rooms: {
       r127: require("src/images/buildings/ed2/ed2-plant-127.png"),
       r128: require("src/images/buildings/ed2/ed2-plant-128.png"),
@@ -35,9 +37,11 @@ const imgs = {
     materials: {
       erlenmeyer: require("src/images/materials/erlenmeyer.png"),
       book: require("src/images/materials/book.png"),
+      room: require("src/images/materials/room.png"),
     },
   },
   ed2: {
+    name: "Building 2",
     rooms: {
       r127: require("src/images/buildings/ed2/ed2-plant-127.png"),
       r128: require("src/images/buildings/ed2/ed2-plant-128.png"),
@@ -53,10 +57,34 @@ const imgs = {
 const library = {
   id: "library",
   rooms: [
-    roomModel("room_127", "Room 127", "150", imgs.library.rooms.r127),
-    roomModel("room_128", "Room 128", "150", imgs.library.rooms.r128),
-    roomModel("room_107", "Room 107", "15", imgs.library.rooms.r107),
-    roomModel("room_114", "Room 114", "30", imgs.library.rooms.r114),
+    roomModel(
+      "room_127",
+      "Room 127",
+      "150",
+      imgs.library.materials.room,
+      imgs.library.rooms.r127
+    ),
+    roomModel(
+      "room_128",
+      "Room 128",
+      "150",
+      imgs.library.materials.room,
+      imgs.library.rooms.r128
+    ),
+    roomModel(
+      "room_107",
+      "Room 107",
+      "15",
+      imgs.library.materials.room,
+      imgs.library.rooms.r107
+    ),
+    roomModel(
+      "room_114",
+      "Room 114",
+      "30",
+      imgs.library.materials.room,
+      imgs.library.rooms.r114
+    ),
   ],
   items: [
     itemModel(

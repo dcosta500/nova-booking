@@ -59,6 +59,7 @@ const Library = (props) => {
   };
 
   const onRoomAcceptClick = (date) => {
+    setItem(undefined);
     setShowSuccess(true);
 
     dispatch(
@@ -75,6 +76,7 @@ const Library = (props) => {
   };
 
   const onItemAcceptClick = (date, quantity) => {
+    setRoom(undefined);
     setShowSuccess(true);
 
     dispatch(
@@ -136,7 +138,21 @@ const Library = (props) => {
     </Box>
   ));
 
-  const noneContent = <Typography>Select an Option</Typography>;
+  const noneContent = (
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100%",
+      }}
+    >
+      <Typography sx={{ color: "#303030", fontSize: "2rem" }}>
+        Select an Option
+      </Typography>
+    </Box>
+  );
 
   const booksContent = (
     <Box className="library-materials-content-itemlist-container">
@@ -242,7 +258,23 @@ const Library = (props) => {
 
   const rightColumnPicker = () => {
     if (subPage === "rooms") {
-      if (room !== undefined) {
+      if (showSuccess)
+        return (
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+
+              height: "100%",
+            }}
+          >
+            <CheckIcon />
+            <Typography>Reservation registered!</Typography>
+          </Box>
+        );
+      else if (room !== undefined) {
         return (
           <DateStockPicker
             doStock={false}
