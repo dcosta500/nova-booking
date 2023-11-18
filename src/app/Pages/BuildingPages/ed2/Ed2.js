@@ -25,20 +25,14 @@ const Ed2 = (props) => {
   const buildings = useSelector((state) => state.buildings);
 
   const [subPage, setSubPage] = useState(undefined);
-  const [tabValue, setTabValue] = useState("gr");
-
-  const [item, setItem] = useState(undefined);
   const [showSuccess, setShowSuccess] = useState(undefined);
+  const [map, setMap] = useState(undefined);
+  const [item, setItem] = useState(undefined);
   const [room, setRoom] = useState(undefined);
 
   const reset = () => {
     setItem(undefined);
     setRoom(undefined);
-  };
-
-  const handleChange = (event, newValue) => {
-    reset();
-    setTabValue(newValue);
   };
 
   const onSelect = (item) => {
@@ -109,11 +103,6 @@ const Ed2 = (props) => {
     },
   ];
 
-  /* preguicodromo: "preguicodromo",
-    teamRooms: "teamRooms",
-    soloRooms: "soloRooms",
-    agoraRoom: "agoraRoom", */
-
   const leftButtons = pages.map((e, key) => (
     <Box key={key} className="library-button">
       <NovaButton
@@ -156,77 +145,9 @@ const Ed2 = (props) => {
     </Box>
   );
 
-  const groupRoomsContent = (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "80%",
-      }}
-    >
-      <img
-        style={{ height: "12rem" }}
-        src={buildings.library.groupRoomsMap}
-        alt="group_rooms_map"
-      />
-    </Box>
-  );
-
-  const soloRoomsContent = (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        height: "80%",
-      }}
-    >
-      <img
-        style={{ height: "12rem" }}
-        src={buildings.library.soloRoomsMap}
-        alt="solo_rooms_map"
-      />
-    </Box>
-  );
-
-  const preguicodromoContent = <Typography>Preguiçodromo Content</Typography>;
-
-  const agoraRoomContent = <Typography>Ágora room content</Typography>;
-
-  const roomsScreen = () => {
-    switch (tabValue) {
-      case "gr":
-        return groupRoomsContent;
-      case "sr":
-        return soloRoomsContent;
-      case "pr":
-        return preguicodromoContent;
-      case "ag":
-        return agoraRoomContent;
-    }
-  };
-
   const roomsContent = (
     <Box className="library-rooms-content-container">
-      <Box className="library-tabs-container">
-        <Tabs
-          sx={{ color: "white", borderColor: "white" }}
-          value={tabValue}
-          onChange={handleChange}
-          variant="scrollable"
-          textColor="inherit"
-          indicatorColor="inherit"
-        >
-          <Tab value="gr" label="Group Rooms" />
-          <Tab value="sr" label="Solo Rooms" />
-          <Tab value="pr" label="Preguiçodromo" />
-          <Tab value="ag" label="Ágora Room" />
-        </Tabs>
-      </Box>
-      <Box className="library-rooms-content">{roomsScreen()}</Box>
+      <Box className="library-rooms-content"></Box>
     </Box>
   );
 
@@ -255,31 +176,31 @@ const Ed2 = (props) => {
   );
 
   const roomsRightColumnContent = () => {
-    let lst = buildings.library.rooms.filter((e) =>
-      e.id.startsWith(`room_${tabValue}`)
+    let lst = buildings.ed2.rooms;
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "start",
+          height: "100%",
+          overflowY: "scroll",
+        }}
+      >
+        {lst.map((e, key) => (
+          <Box key={key} className="library-right-button-container">
+            <NovaButton
+              onMouseEnter={() => setRoom(e)}
+              onClick={() => setRoom(e)}
+              className="library-button"
+            >
+              {e.name}
+            </NovaButton>
+          </Box>
+        ))}
+      </Box>
     );
-    if (lst.length === 0) return undefined;
-    else
-      return (
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "start",
-            height: "100%",
-            overflowY: "scroll",
-          }}
-        >
-          {lst.map((e, key) => (
-            <Box key={key} className="library-right-button-container">
-              <NovaButton onClick={() => setRoom(e)} className="library-button">
-                {e.name}
-              </NovaButton>
-            </Box>
-          ))}
-        </Box>
-      );
   };
 
   const rightColumnPicker = () => {
@@ -342,7 +263,7 @@ const Ed2 = (props) => {
   };
 
   return (
-    <Page title="Library">
+    <Page title="Building 2">
       <Box className="library-page-container">
         {buttonAndInfoColumn}
         <Box className="column-2">
