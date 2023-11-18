@@ -1,33 +1,38 @@
 {
   "files": {
-    "main.css": "/nova-booking/static/css/main.b89501a5.css",
-    "main.js": "/nova-booking/static/js/main.6ff8850f.js",
+    "main.css": "/nova-booking/static/css/main.1d62a2ce.css",
+    "main.js": "/nova-booking/static/js/main.63b637b1.js",
     "static/js/787.13acab92.chunk.js": "/nova-booking/static/js/787.13acab92.chunk.js",
     "static/media/joseProfile.jpg": "/nova-booking/static/media/joseProfile.1595d526121495be27e4.jpg",
     "static/media/ipm-map-library.png": "/nova-booking/static/media/ipm-map-library.b51ee9465ede55a18e0f.png",
     "static/media/ipm-map-ed2.png": "/nova-booking/static/media/ipm-map-ed2.ad4d776453e0df2585b2.png",
     "static/media/ipm-map.png": "/nova-booking/static/media/ipm-map.62400016bbaee8239f58.png",
-    "static/media/ed2-plant-107.png": "/nova-booking/static/media/ed2-plant-107.0eda9155e64cbc703a4c.png",
-    "static/media/ed2-plant-128.png": "/nova-booking/static/media/ed2-plant-128.7998a50254a9cb7e0d85.png",
-    "static/media/ed2-plant-127.png": "/nova-booking/static/media/ed2-plant-127.5da2f8f98e083ccad5a5.png",
-    "static/media/ed2-plant-114.png": "/nova-booking/static/media/ed2-plant-114.c80b8d44ce0b242028a5.png",
     "static/media/logo_icon.png": "/nova-booking/static/media/logo_icon.23261a5f89c91a4b8151.png",
+    "static/media/ed2-plant-114.png": "/nova-booking/static/media/ed2-plant-114.43369362c32b52111abf.png",
+    "static/media/ed2-plant-107.png": "/nova-booking/static/media/ed2-plant-107.f6ce42bf1c0b8a7aee25.png",
+    "static/media/ed2-plant.png": "/nova-booking/static/media/ed2-plant.82ff01b3c282dd765ee4.png",
+    "static/media/ed2-plant-127.png": "/nova-booking/static/media/ed2-plant-127.b2ff9e61c86ba408ef89.png",
+    "static/media/ed2-plant-128.png": "/nova-booking/static/media/ed2-plant-128.9df10da0172ba7c25540.png",
     "static/media/typo_logo.png": "/nova-booking/static/media/typo_logo.6a0a7380e88e9bcafa1b.png",
+    "static/media/solo_rooms.png": "/nova-booking/static/media/solo_rooms.a524d15ee239306b957c.png",
     "static/media/lemosProfile.jpg": "/nova-booking/static/media/lemosProfile.e97a7569e77787b64f4b.jpg",
     "static/media/profile_pic.jpg": "/nova-booking/static/media/profile_pic.e97a7569e77787b64f4b.jpg",
+    "static/media/group_rooms.png": "/nova-booking/static/media/group_rooms.4a24e01fc3dfb4dadf1b.png",
     "static/media/erlenmeyer.png": "/nova-booking/static/media/erlenmeyer.f250df5159a4e992f071.png",
     "static/media/pinaProfile.jpeg": "/nova-booking/static/media/pinaProfile.40d2e000e885e7fa1a40.jpeg",
     "static/media/costaProfile.jpeg": "/nova-booking/static/media/costaProfile.a625d98b3c5bfda64d68.jpeg",
     "static/media/book.png": "/nova-booking/static/media/book.1f9650abd36f9d59751b.png",
+    "static/media/webcam.png": "/nova-booking/static/media/webcam.ed9fbea377e48fb7ea5a.png",
     "static/media/profile-default.jpg": "/nova-booking/static/media/profile-default.0bfb883dddf5359d22bd.jpg",
     "static/media/room.png": "/nova-booking/static/media/room.221dba3b80e25810c04e.png",
+    "static/media/microphone.webp": "/nova-booking/static/media/microphone.690a0f44f033acec1342.webp",
     "index.html": "/nova-booking/index.html",
-    "main.b89501a5.css.map": "/nova-booking/static/css/main.b89501a5.css.map",
-    "main.6ff8850f.js.map": "/nova-booking/static/js/main.6ff8850f.js.map",
+    "main.1d62a2ce.css.map": "/nova-booking/static/css/main.1d62a2ce.css.map",
+    "main.63b637b1.js.map": "/nova-booking/static/js/main.63b637b1.js.map",
     "787.13acab92.chunk.js.map": "/nova-booking/static/js/787.13acab92.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b89501a5.css",
-    "static/js/main.6ff8850f.js"
+    "static/css/main.1d62a2ce.css",
+    "static/js/main.63b637b1.js"
   ]
 }
