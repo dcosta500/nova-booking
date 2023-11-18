@@ -21,6 +21,14 @@ import { addReservation } from "src/redux/slices/userSlice";
 import CheckIcon from "@mui/icons-material/Check";
 
 const Ed2 = (props) => {
+  const mapImg = {
+    default: require("src/images/buildings/ed2/ed2-plant.png"),
+    room_127: require("src/images/buildings/ed2/ed2-plant-127.png"),
+    room_128: require("src/images/buildings/ed2/ed2-plant-128.png"),
+    room_107: require("src/images/buildings/ed2/ed2-plant-107.png"),
+    room_114: require("src/images/buildings/ed2/ed2-plant-114.png"),
+  };
+
   const dispatch = useDispatch();
   const buildings = useSelector((state) => state.buildings);
 
@@ -33,6 +41,7 @@ const Ed2 = (props) => {
   const reset = () => {
     setItem(undefined);
     setRoom(undefined);
+    setMap(undefined);
   };
 
   const onSelect = (item) => {
@@ -147,7 +156,13 @@ const Ed2 = (props) => {
 
   const roomsContent = (
     <Box className="library-rooms-content-container">
-      <Box className="library-rooms-content"></Box>
+      <Box className="library-rooms-content">
+        <img
+          style={{ height: "25rem" }}
+          src={mapImg[map === undefined ? "default" : map]}
+          alt="ed2_map"
+        />
+      </Box>
     </Box>
   );
 
@@ -191,7 +206,7 @@ const Ed2 = (props) => {
         {lst.map((e, key) => (
           <Box key={key} className="library-right-button-container">
             <NovaButton
-              onMouseEnter={() => setRoom(e)}
+              onMouseEnter={() => setMap(e.id)}
               onClick={() => setRoom(e)}
               className="library-button"
             >
