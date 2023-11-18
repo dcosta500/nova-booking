@@ -91,6 +91,11 @@
 }
 
 .library-rooms-content-container {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-between;
+  align-items: center;
   height: 100%;
 }
 
@@ -98,10 +103,8 @@
   display: flex;
   flex-direction: column;
 
-  justify-content: start;
+  justify-content: center;
   align-items: center;
-
-  padding: 1rem;
   height: 100%;
 }
 

@@ -91,18 +91,16 @@
 }
 
 .ed2-rooms-content-container {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
   height: 100%;
 }
 
 .ed2-rooms-content {
-  display: flex;
-  flex-direction: column;
-
-  justify-content: start;
-  align-items: center;
-
   padding: 1rem;
-  height: 100%;
 }
 
 .column-1 {

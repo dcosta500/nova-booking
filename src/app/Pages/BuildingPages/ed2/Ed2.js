@@ -159,7 +159,7 @@ const Ed2 = (props) => {
     <Box className="ed2-rooms-content-container">
       <Box className="ed2-rooms-content">
         <img
-          style={{ height: "25rem" }}
+          style={{ height: "40vh" }}
           src={mapImg[map === undefined ? "default" : map]}
           alt="ed2_map"
         />
