@@ -38,10 +38,13 @@ const Ed2 = (props) => {
   const [item, setItem] = useState(undefined);
   const [room, setRoom] = useState(undefined);
 
+  const [roomInfo, setRoomInfo] = useState(undefined);
+
   const reset = () => {
     setItem(undefined);
     setRoom(undefined);
     setMap(undefined);
+    setRoomInfo(undefined);
   };
 
   const onSelect = (item) => {
@@ -61,7 +64,7 @@ const Ed2 = (props) => {
 
     dispatch(
       addReservation({
-        buildingId: buildings.library.id,
+        buildingId: buildings.ed2.id,
         itemId: room.id,
         date,
         quantity: undefined,
@@ -78,7 +81,7 @@ const Ed2 = (props) => {
 
     dispatch(
       decreaseStock({
-        buildingId: buildings.library.id,
+        buildingId: buildings.ed2.id,
         itemId: item.id,
         quantity: quantity,
       })
@@ -86,7 +89,7 @@ const Ed2 = (props) => {
 
     dispatch(
       addReservation({
-        buildingId: buildings.library.id,
+        buildingId: buildings.ed2.id,
         itemId: item.id,
         date,
         quantity,
@@ -113,13 +116,13 @@ const Ed2 = (props) => {
   ];
 
   const leftButtons = pages.map((e, key) => (
-    <Box key={key} className="library-button">
+    <Box key={key} className="ed2-button">
       <NovaButton
         onClick={() => {
           setSubPage(e.id);
           reset();
         }}
-        className="library-button"
+        className="ed2-button"
       >
         {e.title}
       </NovaButton>
@@ -143,20 +146,18 @@ const Ed2 = (props) => {
   );
 
   const materialsContent = (
-    <Box className="library-materials-content-itemlist-container">
+    <Box className="ed2-materials-content-itemlist-container">
       <ItemsList
         height="100%"
-        items={buildings.library.items.filter((item) =>
-          item.id.startsWith("mat")
-        )}
+        items={buildings.ed2.items.filter((item) => item.id.startsWith("mat"))}
         onSelect={onSelect}
       />
     </Box>
   );
 
   const roomsContent = (
-    <Box className="library-rooms-content-container">
-      <Box className="library-rooms-content">
+    <Box className="ed2-rooms-content-container">
+      <Box className="ed2-rooms-content">
         <img
           style={{ height: "25rem" }}
           src={mapImg[map === undefined ? "default" : map]}
@@ -179,11 +180,24 @@ const Ed2 = (props) => {
 
   const buttonAndInfoColumn = (
     <Box className="column-1">
-      <Box className="library-button-section">{leftButtons}</Box>
-      <Box className="library-info-section">
-        {subPage === "rooms" && (
-          <Paper sx={paperStyle} className="library-info-card">
-            <Box className="library-info-content">Item Info</Box>
+      <Box className="ed2-button-section">{leftButtons}</Box>
+      <Box className="ed2-info-section">
+        {subPage === "rooms" && roomInfo !== undefined && (
+          <Paper sx={paperStyle} className="ed2-info-card">
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100%",
+                padding: 0,
+              }}
+              className="ed2-info-content"
+            >
+              <Typography>{roomInfo.name}</Typography>
+              <Typography>Max Ocupation: {roomInfo.maxOcupation}</Typography>
+            </Box>
           </Paper>
         )}
       </Box>
@@ -204,11 +218,14 @@ const Ed2 = (props) => {
         }}
       >
         {lst.map((e, key) => (
-          <Box key={key} className="library-right-button-container">
+          <Box key={key} className="ed2-right-button-container">
             <NovaButton
-              onMouseEnter={() => setMap(e.id)}
+              onMouseEnter={() => {
+                setMap(e.id);
+                setRoomInfo({ name: e.name, maxOcupation: e.maxOcupation });
+              }}
               onClick={() => setRoom(e)}
-              className="library-button"
+              className="ed2-button"
             >
               {e.name}
             </NovaButton>
@@ -279,7 +296,7 @@ const Ed2 = (props) => {
 
   return (
     <Page title="Building 2">
-      <Box className="library-page-container">
+      <Box className="ed2-page-container">
         {buttonAndInfoColumn}
         <Box className="column-2">
           <Paper sx={paperStyle} className="center-display">
@@ -289,7 +306,7 @@ const Ed2 = (props) => {
         <Box className="column-3">
           <Paper
             sx={{ height: "50vh", ...paperStyle }}
-            className="library-right-picker"
+            className="ed2-right-picker"
           >
             {rightColumnPicker()}
           </Paper>

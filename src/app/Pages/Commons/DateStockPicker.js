@@ -30,7 +30,6 @@ const DateStockPicker = (props) => {
     onCancel();
   };
   const onDateChange = (date) => {
-    console.log(date);
     setDate(date);
   };
 

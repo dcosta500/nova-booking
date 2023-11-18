@@ -35,6 +35,8 @@ const imgs = {
       erlenmeyer: require("src/images/materials/erlenmeyer.png"),
       book: require("src/images/materials/book.png"),
       room: require("src/images/materials/room.png"),
+      webcam: require("src/images/materials/webcam.png"),
+      microphone: require("src/images/materials/microphone.webp"),
     },
   },
   ed2: {
@@ -115,23 +117,43 @@ const library = {
     roomModel("room_gr4", "Group Room 4", 8, imgs.library.materials.room),
   ],
   items: [
+    itemModel("mat_web_1", "Webcam 2", imgs.library.materials.webcam, 34),
     itemModel(
-      "mat_erm_50",
-      "Erlenmeyer 50ml",
-      imgs.library.materials.erlenmeyer,
-      5
+      "mat_web_2",
+      "Webcam 2 Pro Max",
+      imgs.library.materials.webcam,
+      34
     ),
     itemModel(
-      "mat_erm_100",
-      "Erlenmeyer 100ml",
-      imgs.library.materials.erlenmeyer,
-      5
+      "mat_web_3",
+      "Webcam 2 Super Pro Mega Max",
+      imgs.library.materials.webcam,
+      34
+    ),
+    itemModel("mat_web_4", "Webcam 3", imgs.library.materials.webcam, 34),
+    itemModel(
+      "mat_mic_1",
+      "Microphone 1",
+      imgs.library.materials.microphone,
+      31
     ),
     itemModel(
-      "mat_erm_150",
-      "Erlenmeyer 150ml",
-      imgs.library.materials.erlenmeyer,
-      5
+      "mat_mic_2",
+      "Microphone 2",
+      imgs.library.materials.microphone,
+      97
+    ),
+    itemModel(
+      "mat_mic_3",
+      "Microphone 3",
+      imgs.library.materials.microphone,
+      92
+    ),
+    itemModel(
+      "mat_mic_4",
+      "Microphone 4",
+      imgs.library.materials.microphone,
+      123
     ),
     itemModel(
       "book_hp_1",
@@ -168,17 +190,23 @@ const ed2 = {
       "mat_erm_50",
       "Erlenmeyer 50ml",
       imgs.ed2.materials.erlenmeyer,
-      5
+      37
     ),
     itemModel(
       "mat_erm_100",
       "Erlenmeyer 100ml",
       imgs.ed2.materials.erlenmeyer,
-      5
+      23
     ),
     itemModel(
       "mat_erm_150",
       "Erlenmeyer 150ml",
+      imgs.ed2.materials.erlenmeyer,
+      12
+    ),
+    itemModel(
+      "mat_erm_200",
+      "Erlenmeyer 200ml",
       imgs.ed2.materials.erlenmeyer,
       5
     ),

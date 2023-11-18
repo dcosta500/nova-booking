@@ -102,7 +102,22 @@ const MyReservations = (props) => {
 
   const contentPicker = () => {
     const res = retrieveReservations().filter((e) => e.itemId.startsWith(tab));
-    if (res.length === 0) return <Box sx={{}}>None</Box>;
+    if (res.length === 0)
+      return (
+        <Box
+          sx={{
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Typography sx={{ color: "#303030", fontSize: "2rem" }}>
+            None
+          </Typography>
+        </Box>
+      );
     return (
       <Box
         sx={{

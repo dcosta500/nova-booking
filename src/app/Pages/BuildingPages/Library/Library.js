@@ -30,10 +30,12 @@ const Library = (props) => {
   const [item, setItem] = useState(undefined);
   const [showSuccess, setShowSuccess] = useState(undefined);
   const [room, setRoom] = useState(undefined);
+  const [roomInfo, setRoomInfo] = useState(undefined);
 
   const reset = () => {
     setItem(undefined);
     setRoom(undefined);
+    setRoomInfo(undefined);
   };
 
   const handleChange = (event, newValue) => {
@@ -207,10 +209,10 @@ const Library = (props) => {
       />
     </Box>
   );
-
+  /* 
   const preguicodromoContent = <Typography>Preguiçodromo Content</Typography>;
 
-  const agoraRoomContent = <Typography>Ágora room content</Typography>;
+  const agoraRoomContent = <Typography>Ágora room content</Typography>; */
 
   const roomsScreen = () => {
     switch (tabValue) {
@@ -218,10 +220,10 @@ const Library = (props) => {
         return groupRoomsContent;
       case "sr":
         return soloRoomsContent;
-      case "pr":
+      /* case "pr":
         return preguicodromoContent;
       case "ag":
-        return agoraRoomContent;
+        return agoraRoomContent; */
     }
   };
 
@@ -238,8 +240,8 @@ const Library = (props) => {
         >
           <Tab value="gr" label="Group Rooms" />
           <Tab value="sr" label="Solo Rooms" />
-          <Tab value="pr" label="Preguiçodromo" />
-          <Tab value="ag" label="Ágora Room" />
+          {/* <Tab value="pr" label="Preguiçodromo" />
+          <Tab value="ag" label="Ágora Room" /> */}
         </Tabs>
       </Box>
       <Box className="library-rooms-content">{roomsScreen()}</Box>
@@ -263,9 +265,22 @@ const Library = (props) => {
     <Box className="column-1">
       <Box className="library-button-section">{leftButtons}</Box>
       <Box className="library-info-section">
-        {subPage === "rooms" && (
+        {subPage === "rooms" && roomInfo !== undefined && (
           <Paper sx={paperStyle} className="library-info-card">
-            <Box className="library-info-content">Item Info</Box>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100%",
+                padding: 0,
+              }}
+              className="library-info-content"
+            >
+              <Typography>{roomInfo.name}</Typography>
+              <Typography>Max Ocupation: {roomInfo.maxOcupation}</Typography>
+            </Box>
           </Paper>
         )}
       </Box>
@@ -291,7 +306,13 @@ const Library = (props) => {
         >
           {lst.map((e, key) => (
             <Box key={key} className="library-right-button-container">
-              <NovaButton onClick={() => setRoom(e)} className="library-button">
+              <NovaButton
+                onMouseEnter={() =>
+                  setRoomInfo({ name: e.name, maxOcupation: e.maxOcupation })
+                }
+                onClick={() => setRoom(e)}
+                className="library-button"
+              >
                 {e.name}
               </NovaButton>
             </Box>
