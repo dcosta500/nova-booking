@@ -246,9 +246,33 @@ export const buildingsSlice = createSlice({
 
       state[building.id]["items"][itemIdx].stock -= payload.quantity;
     },
+    restock: (state, action) => {
+      // action.payload = reservation: {buildingId, itemId, date, quantity}
+      const payload = action.payload;
+      const currentState = current(state);
+
+      // Find building
+      const building = { ...currentState[`${payload.buildingId}`] };
+      if (building === undefined) return debugPrint("Building is undefined.");
+
+      if (!payload.itemId.startsWith("room")) {
+        // Find item
+        let itemIdx = -1;
+        building.items.find((item, index) => {
+          if (item.id == payload.itemId) {
+            itemIdx = index;
+            return true;
+          }
+        });
+
+        if (itemIdx === -1) return debugPrint("Item is undefined.");
+
+        state[building.id]["items"][itemIdx].stock += payload.quantity;
+      }
+    },
   },
 });
 
-export const { decreaseStock } = buildingsSlice.actions;
+export const { decreaseStock, restock } = buildingsSlice.actions;
 
 export default buildingsSlice.reducer;

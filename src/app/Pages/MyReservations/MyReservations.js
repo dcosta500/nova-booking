@@ -4,6 +4,7 @@ import "./MyReservations.css";
 import Page from "../Commons/Page";
 import {
   Box,
+  IconButton,
   List,
   ListItem,
   Paper,
@@ -11,9 +12,13 @@ import {
   Tabs,
   Typography,
 } from "@mui/material";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { cancelReservation } from "src/redux/slices/userSlice";
+import { restock } from "src/redux/slices/buildingsSlice";
+import { DeleteOutline } from "@mui/icons-material";
 
 const MyReservations = (props) => {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const buildings = useSelector((state) => state.buildings);
   const [tab, setTab] = useState("mat");
@@ -29,6 +34,11 @@ const MyReservations = (props) => {
     )
       return [];
     return user.reservations.get(user.name);
+  };
+
+  const cancelReservationOnClick = (r) => {
+    dispatch(cancelReservation(r));
+    dispatch(restock(r));
   };
 
   const createReservationCard = (r, key) => {
@@ -93,6 +103,11 @@ const MyReservations = (props) => {
                   {r.date.format("DD-MM-YYYY")}
                 </Typography>
               </Box>
+            </Box>
+            <Box>
+              <IconButton onClick={() => cancelReservationOnClick(r)}>
+                <DeleteOutline sx={{ fontSize: "1rem", color: "#bc0000" }} />
+              </IconButton>
             </Box>
           </Box>
         </Paper>

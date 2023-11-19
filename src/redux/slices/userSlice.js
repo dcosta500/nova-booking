@@ -33,9 +33,31 @@ export const userSlice = createSlice({
         });
       }
     },
+    cancelReservation: (state, action) => {
+      // reservation: {buildingId, itemId, date, quantity}
+      const payload = action.payload;
+      if (state.name !== undefined && payload.date !== undefined) {
+        console.log("Entered");
+        let res = state.reservations.get(state.name);
+
+        let resCpy = current(res);
+        console.log(resCpy);
+        console.log(payload);
+
+        let idx = resCpy.indexOf(payload);
+
+        if (idx < 0) {
+          console.log("Negative idx");
+          return;
+        }
+
+        res = res.splice(idx, 1);
+      }
+    },
   },
 });
 
-export const { updateName, addReservation } = userSlice.actions;
+export const { updateName, addReservation, cancelReservation } =
+  userSlice.actions;
 
 export default userSlice.reducer;

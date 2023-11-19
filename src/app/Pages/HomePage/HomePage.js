@@ -1,4 +1,12 @@
-import { Box, Button, List, ListItem, Paper, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  IconButton,
+  List,
+  ListItem,
+  Paper,
+  Typography,
+} from "@mui/material";
 import * as React from "react";
 import ContentColumn from "./ContentColumn";
 
@@ -7,6 +15,9 @@ import "./HomePage.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import NovaButton from "../Commons/NovaButton";
+import { DeleteOutline } from "@mui/icons-material";
+import { restock } from "src/redux/slices/buildingsSlice";
+import { cancelReservation } from "src/redux/slices/userSlice";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -30,6 +41,11 @@ const HomePage = () => {
 
   const metaStyles = {
     fontSize: "0.85rem",
+  };
+
+  const cancelReservationOnClick = (r) => {
+    dispatch(cancelReservation(r));
+    dispatch(restock(r));
   };
 
   const retrieveReservations = () => {
@@ -116,6 +132,11 @@ const HomePage = () => {
                   {r.date.format("DD-MM-YYYY")}
                 </Typography>
               </Box>
+            </Box>
+            <Box>
+              <IconButton onClick={() => cancelReservationOnClick(r)}>
+                <DeleteOutline sx={{ fontSize: "1rem", color: "#bc0000" }} />
+              </IconButton>
             </Box>
           </Box>
         </Paper>
