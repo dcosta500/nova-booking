@@ -40,6 +40,12 @@ const Ed2 = (props) => {
 
   const [roomInfo, setRoomInfo] = useState(undefined);
 
+  const [key, setKey] = useState(1);
+
+  const forceRerender = () => {
+    setKey((prevKey) => prevKey + 1);
+  };
+
   const reset = () => {
     setItem(undefined);
     setRoom(undefined);
@@ -51,6 +57,7 @@ const Ed2 = (props) => {
     if (item.stock > 0) {
       setShowSuccess(false);
       setItem(item);
+      forceRerender();
     }
   };
 
@@ -283,6 +290,7 @@ const Ed2 = (props) => {
       else if (item !== undefined)
         return (
           <DateStockPicker
+            key={key}
             doStock={true}
             minStock={item.stock == 0 ? 0 : 1}
             maxStock={item.stock}

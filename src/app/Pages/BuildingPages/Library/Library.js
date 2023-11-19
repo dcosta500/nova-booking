@@ -269,7 +269,7 @@ const Library = (props) => {
   };
 
   const buttonAndInfoColumn = (
-    <Box className="column-1">
+    <Box className="library-column-1">
       <Box className="library-button-section">{leftButtons}</Box>
       <Box className="library-info-section">
         {subPage === "rooms" && roomInfo !== undefined && (
@@ -392,12 +392,12 @@ const Library = (props) => {
     <Page title="Library">
       <Box className="library-page-container">
         {buttonAndInfoColumn}
-        <Box className="column-2">
-          <Paper sx={paperStyle} className="center-display">
+        <Box className="library-column-2">
+          <Paper sx={paperStyle} className="library-center-display">
             {centerDisplayContent()}
           </Paper>
         </Box>
-        <Box className="column-3">
+        <Box className="library-column-3">
           <Paper
             sx={{ height: "50vh", ...paperStyle }}
             className="library-right-picker"
