@@ -32,6 +32,12 @@ const Library = (props) => {
   const [room, setRoom] = useState(undefined);
   const [roomInfo, setRoomInfo] = useState(undefined);
 
+  const [key, setKey] = useState(1);
+
+  const forceRerender = () => {
+    setKey((prevKey) => prevKey + 1);
+  };
+
   const reset = () => {
     setItem(undefined);
     setRoom(undefined);
@@ -47,6 +53,7 @@ const Library = (props) => {
     if (item.stock > 0) {
       setShowSuccess(false);
       setItem(item);
+      forceRerender();
     }
   };
 
@@ -369,6 +376,7 @@ const Library = (props) => {
       else if (item !== undefined)
         return (
           <DateStockPicker
+            key={key}
             doStock={true}
             minStock={item.stock == 0 ? 0 : 1}
             maxStock={item.stock}

@@ -19,6 +19,8 @@ const DateStockPicker = (props) => {
 
   const [stock, setStock] = useState(minStock);
   const [date, setDate] = useState(undefined);
+  const [showDateValidationMessage, setShowDateValidationMessage] =
+    useState(false);
 
   const reset = () => {
     setStock(minStock);
@@ -38,7 +40,13 @@ const DateStockPicker = (props) => {
       if (!date.isBefore(dayjs())) {
         onAccept(date, stock);
         reset();
+      } else {
+        setShowDateValidationMessage(true);
+        setTimeout(() => setShowDateValidationMessage(false), 4000);
       }
+    } else {
+      setShowDateValidationMessage(true);
+      setTimeout(() => setShowDateValidationMessage(false), 4000);
     }
   };
 
@@ -68,7 +76,7 @@ const DateStockPicker = (props) => {
   );
 
   return (
-    <Box className="datestockpicker-right-picker-content">
+    <Box key={props.key} className="datestockpicker-right-picker-content">
       <Typography>Picking: {itemName}</Typography>
       <Box className="datestockpicker-datepicker-topbox">
         <Typography>Reservation until:</Typography>
@@ -76,6 +84,11 @@ const DateStockPicker = (props) => {
         <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="pt">
           <DatePicker onChange={onDateChange} label="Date" />
         </LocalizationProvider>
+        {showDateValidationMessage && (
+          <Typography sx={{ color: "red" }}>
+            Date must be in the future.
+          </Typography>
+        )}
       </Box>
       {doStock && stockContent}
       <Box className="datestockpicker-datepicker-botbox">
