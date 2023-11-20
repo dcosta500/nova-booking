@@ -16,6 +16,7 @@ export const pathsSlice = createSlice({
   name: "paths",
   initialState: {
     homePage: paths.homePage,
+    homePageAlt: "",
     myReservationsPage: paths.myReservationsPage,
     aboutPage: paths.aboutPage,
     profilePage: paths.profilePage,

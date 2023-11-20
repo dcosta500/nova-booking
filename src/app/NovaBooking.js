@@ -22,6 +22,7 @@ const NovaBooking = () => {
       <div className="site-body">
         <Routes>
           <Route path={paths.homePage} element={<HomePage />} />
+          <Route path={paths.homePageAlt} element={<HomePage />} />
           <Route path={paths.profilePage} element={<ProfilePage />} />
           <Route path={paths.aboutPage} element={<AboutPage />} />
           <Route path={paths.libraryPage} element={<Library />} />
