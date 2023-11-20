@@ -37,19 +37,13 @@ export const userSlice = createSlice({
       // reservation: {buildingId, itemId, date, quantity}
       const payload = action.payload;
       if (state.name !== undefined && payload.date !== undefined) {
-        console.log("Entered");
         let res = state.reservations.get(state.name);
 
         let resCpy = current(res);
-        console.log(resCpy);
-        console.log(payload);
 
         let idx = resCpy.indexOf(payload);
 
-        if (idx < 0) {
-          console.log("Negative idx");
-          return;
-        }
+        if (idx < 0) return;
 
         res = res.splice(idx, 1);
       }

@@ -1,8 +1,8 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 
 const debugPrint = (message, obj) => {
-  console.log(`DEBUG MESSAGE: FROM BUILDING_SLICE, ${message}`);
-  console.log(obj);
+  /*   console.log(`DEBUG MESSAGE: FROM BUILDING_SLICE, ${message}`);
+  console.log(obj); */
   return "debug_print";
 };
 
