@@ -48,6 +48,7 @@ const imgs = {
     },
     materials: {
       erlenmeyer: require("src/images/materials/erlenmeyer.png"),
+      room: require("src/images/materials/room.png"),
     },
   },
 };
@@ -180,10 +181,10 @@ const ed2 = {
   name: "Building 2",
   id: "ed2",
   rooms: [
-    roomModel("room_127", "Room 127", "150", imgs.ed2.rooms.r127),
-    roomModel("room_128", "Room 128", "150", imgs.ed2.rooms.r128),
-    roomModel("room_107", "Room 107", "15", imgs.ed2.rooms.r107),
-    roomModel("room_114", "Room 114", "30", imgs.ed2.rooms.r114),
+    roomModel("room_127", "Room 127", "150", imgs.ed2.materials.room),
+    roomModel("room_128", "Room 128", "150", imgs.ed2.materials.room),
+    roomModel("room_107", "Room 107", "15", imgs.ed2.materials.room),
+    roomModel("room_114", "Room 114", "30", imgs.ed2.materials.room),
   ],
   items: [
     itemModel(
