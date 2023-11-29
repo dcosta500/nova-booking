@@ -51,13 +51,13 @@ const Navbar = () => {
                 ? navigate(paths.profilePage)
                 : navigate(paths.myReservationsPage)
             }
-            sx={{ ...buttonTextStyle, color: teal }}
+            sx={{ ...buttonTextStyle, color: "white" }}
           >
             My Reservations
           </Typography>
           <Typography
             onClick={() => navigate(paths.aboutPage)}
-            sx={{ ...buttonTextStyle, color: teal }}
+            sx={{ ...buttonTextStyle, color: "white" }}
           >
             About
           </Typography>

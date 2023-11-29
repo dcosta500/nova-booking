@@ -7,6 +7,7 @@ const NovaButton = (props) => {
     <Button
       sx={{ width: props.width }}
       onMouseEnter={props.onMouseEnter}
+      onMouseLeave={props.onMouseLeave}
       onClick={props.onClick}
       className="nova-button"
       variant="contained"
